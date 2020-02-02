@@ -220,6 +220,11 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: -6933644929546293665, guid: ab6c2b1aa76e1944fbb23cc40de42dc3,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3666760e54f755347897482217267c99, type: 2}
     - target: {fileID: -6357427375245058314, guid: ab6c2b1aa76e1944fbb23cc40de42dc3,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
@@ -330,11 +335,31 @@ PrefabInstance:
       propertyPath: m_Name
       value: GalleryFloorpanMaster
       objectReference: {fileID: 0}
+    - target: {fileID: 851099753836551793, guid: ab6c2b1aa76e1944fbb23cc40de42dc3,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 91c9464fc21c25647b0ad51a9d75accc, type: 2}
+    - target: {fileID: 1711277887553122256, guid: ab6c2b1aa76e1944fbb23cc40de42dc3,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3666760e54f755347897482217267c99, type: 2}
     - target: {fileID: 2573773122768859570, guid: ab6c2b1aa76e1944fbb23cc40de42dc3,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
       objectReference: {fileID: 2100000, guid: 01098c3c9a306da488c108ea5401bfbf, type: 2}
+    - target: {fileID: 4157432802366533370, guid: ab6c2b1aa76e1944fbb23cc40de42dc3,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3666760e54f755347897482217267c99, type: 2}
+    - target: {fileID: 4196040851096478221, guid: ab6c2b1aa76e1944fbb23cc40de42dc3,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 3666760e54f755347897482217267c99, type: 2}
     - target: {fileID: 7440170883430794628, guid: ab6c2b1aa76e1944fbb23cc40de42dc3,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
