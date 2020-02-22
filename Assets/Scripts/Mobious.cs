@@ -17,28 +17,32 @@ public class Mobious : MonoBehaviour
     // Use this for initialization
     void Start()
     {
-
+        GetComponent<MeshFilter>().mesh = new Mesh();
     }
 
     // Update is called once per frame
     void Update()
     {
-       // radius = Mathf.Sin(Time.deltaTime);
-        GetComponent<MeshFilter>().mesh = Generate();
+        // radius = Mathf.Sin(Time.deltaTime);
+        this.UpdateMesh(GetComponent<MeshFilter>().mesh);
     }
 
-    private Mesh Generate()
+     Mesh UpdateMesh(Mesh m)
     {
-        Mesh newMesh = new Mesh();
+        if(m == null) m = new Mesh();
 
-        float tm = Time.realtimeSinceStartup;
+        m.Clear();
 
-
+     
         Vector3[] vertices = new Vector3[divisions * 2];
         Vector3[] normals = new Vector3[divisions * 2];
         //        print("vertices.Length: " + vertices.Length);
         float radianDivWidth = Mathf.PI * 4.0f / (divisions - 0);
         float stripRadianDivWidth = Mathf.PI * 2.0f / (divisions - 0);
+
+        float tm = Time.timeSinceLevelLoad;
+
+
 
         for (int i = 0; i < divisions; i++)
         {
@@ -79,19 +83,19 @@ Mathf.Sin(tm + curRingRad * frequency));
             triangles[i + 5] = vIndex + 3;
         }
 
-        newMesh.name = "Procedural Mobius";
-        newMesh.vertices = vertices;
-        newMesh.triangles = triangles;
-        newMesh.normals = normals;
+        m.name = "Procedural Mobius";
+        m.vertices = vertices;
+        m.triangles = triangles;
+        m.normals = normals;
         //        newMesh.RecalculateNormals();
-        return newMesh;
+        return m;
     }
 
     private void OnDrawGizmos()
     {
 
         Gizmos.color = Color.cyan;
-        Gizmos.DrawWireMesh(Generate());
+        Gizmos.DrawWireMesh(UpdateMesh(null), transform.position, transform.rotation, transform.localScale);
 
     }
 }
