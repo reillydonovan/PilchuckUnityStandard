@@ -1,0 +1,62 @@
+CREATING YOUR FIRST SCRIPT
+--------------------------
+
+Creating Your First Script video can be viewed here: https://youtu.be/xKayAus5Heg
+
+1. Create a new script called LaserGunAudio.
+2. Open the script to edit.
+3. Above the class, write: [RequireComponent(typeof(AudioSource))]
+4. At the top of the script, write: using ATKSharp.Generators.Oscillators.Trivial;
+5. At the top of the class, write: TPhasor phasor;
+6. Initialize phasor in the Start method: phasor = new TPhasor();
+7. Create the OnAudioFilterRead Unity method with nested for loops iterating over data and channels:
+
+void OnAudioFilterRead(float[] data, int channels){
+	for(int i = 0;i < data.Length;i+=channels){ //Iterate over the data array, skipping the number of channels
+
+		for(int j = 0;j < channels;j++){ //iterate over the number of channels
+		
+		}
+
+	}
+}
+
+8. Above the outer for loop, write: if(phasor!=null)return; // OnAudioFilterRead can run before the Start method. Make sure phasor is not null.
+9. In the outer for loop, write: float currentSample = phasor.Generate(); //Set the current sample to the value of the phasor generator
+10. In the inner for loop, write: data[i + j] = currentSample; // Set the data at this index to the currentSample
+11. Save, attach the script to the MainCamera, and press play in the editor to hear a simple phasor wave play.
+12. At the top of the script, write: using ATKSharp.Modifiers; // imports the Modifiers library from ATKSharp
+13. At the top of the script, write: using ATKSharp.Envelopes; // imports the Envelopes library from ATKSharp
+14. At the top of the class, write: LowPass lowPass; // A low pass modifier
+15. At the top of the class, write: CTEnvelope envelope; // An ADSR envelope
+16. Initialize lowPass in the Start method: lowPass = new LowPass(); // set to the default LowPass
+17. Initialize envelope in the Start method: envelope = new CTEnvelope(); // set to the default CTEnvelope
+18. Under the line float currentSample = phasor.Generate();, write: currentSample = lowPass.Modify(currentSample); // set the current sample to the modified sample
+19. Under the line currentSample = lowPass.Modify(currentSample);, write: currentSample *= envelope.Generate(); // set the current sample to itself multiplied by the envelope value
+20. At the top of the class, write: [SerializeField]float frequency = 1000f; // the base frequency
+21. At the top of the class, write: [SerializeField]float frequencyDrop = 200f; // the amount to drop
+22. At the top of the class, write: [SerializeField]float frequencyDropSpeed = 20f; //the speed at which to drop
+23. Inside the class, write a coroutine to process the laser gun shot:
+
+IEnumerator Shoot(){
+	envelope.Gate = 1; //Open the envelope gate
+	float adjustedFrequency = frequency; // set the adjustedFrequency to the base frequency to start
+	while (adjustedFrequency > frequency - frequencyDrop){ // while adjustedFrequency has not reach the target
+		adjustedFrequency -= frequencyDropSpeed; // reduce adjustedFrequency by the frequencyDropSpeed
+		phasor.Frequency = adjustedFrequency; // set the phasor's frequency to the adjusted frequency
+		yield return new WaitForEndOfFrame(); // wait until the next frame
+	}
+	envelope.Gate = 0; //Close the envelope gate
+}
+
+24. At the top of the class, write: Coroutine shootCoroutine;
+25. Inside Unity's Update method write:
+
+if(Input.GetKeyDown(KeyCode.Space)){ // If the space bar is pressed
+	if(shootCoroutine!=null)
+		StopCoroutine(shootCoroutine); // Stop the shoot coroutine if it is not null
+	shootCoroutine = StartCoroutine(Shoot()); // Start the shootCoroutine
+}
+
+26. Save, press play in the editor, and press the spacebar to hear some laser gun sounds.
+27. Congratulations on making your first ATK script!

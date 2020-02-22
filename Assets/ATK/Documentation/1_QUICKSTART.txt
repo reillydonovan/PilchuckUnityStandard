@@ -1,0 +1,14 @@
+QUICKSTART
+----------
+
+Quickstart video can be viewed here: https://youtu.be/7inMoE0fwjs
+
+1. If you haven't already, download the ATK-Sharp library at https://github.com/idialab/ATK-Sharp.
+2. Open Assets/ATK/Scenes/ForestCampsiteDemo.unity
+3. Press play.
+4. There are 4 different sound scripts running in the scene:
+	- WindAudio.cs on the WindZone game object.
+	- FireAudio.cs on the Campfire game object.
+	- ChimeAudio.cs on pPipe(1-8) in the Wind chimes game object.
+	- Cricket.cs on the Cricket(1-5) game objects.
+5. Adjust the settings in the inspectors of these scripts to hear how the sound can be modified at runtime.

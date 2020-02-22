@@ -20,12 +20,12 @@ Material:
     serializedVersion: 3
     m_TexEnvs: []
     m_Floats:
-    - _Glossiness: 1
-    - _Harmonics: 3
-    - _Iterations: 0.06
-    - _Metallic: 1
-    - _Offset: 0.56
-    - _Tesselation: 10
+    - _Glossiness: 2.36
+    - _Harmonics: 94.18
+    - _Iterations: 118.41
+    - _Metallic: -3.93
+    - _Offset: -0.9
+    - _Tesselation: 2
     m_Colors:
     - _ColorHigh: {r: 1, g: 1, b: 1, a: 1}
     - _ColorLow: {r: 0, g: 0, b: 0, a: 1}
