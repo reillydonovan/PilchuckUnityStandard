@@ -266,6 +266,26 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
+--- !u!1 &48171715 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 2724624175765142668, guid: e74178f230a66e94cbec0ecc03886bad,
+    type: 3}
+  m_PrefabInstance: {fileID: 264330741}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &48171722
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 48171715}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbfd62d45091f964a85c162015f5dd29, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  timeFade: 10
+  pauseTime: 10
 --- !u!1 &55583036
 GameObject:
   m_ObjectHideFlags: 0
@@ -6165,6 +6185,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: MobiusStrip
+      objectReference: {fileID: 0}
+    - target: {fileID: 2724624175765142671, guid: e74178f230a66e94cbec0ecc03886bad,
+        type: 3}
+      propertyPath: frequency
+      value: 5.51
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: e74178f230a66e94cbec0ecc03886bad, type: 3}
@@ -19013,6 +19038,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SphereHarmonic
       objectReference: {fileID: 0}
+    - target: {fileID: 2240033821227636527, guid: 7bbb5cb6b7fa2a8409875bbbb7c6cbef,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7bbb5cb6b7fa2a8409875bbbb7c6cbef, type: 3}
 --- !u!1 &879455361
@@ -26271,6 +26301,11 @@ PrefabInstance:
       propertyPath: m_Name
       value: SphereHarmonic (1)
       objectReference: {fileID: 0}
+    - target: {fileID: 2240033821227636527, guid: 7bbb5cb6b7fa2a8409875bbbb7c6cbef,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 7bbb5cb6b7fa2a8409875bbbb7c6cbef, type: 3}
 --- !u!4 &1656312768
@@ -28988,6 +29023,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: 65kIcosphere
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: 2930603b287b52949859db3f30518066,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 2930603b287b52949859db3f30518066, type: 3}
