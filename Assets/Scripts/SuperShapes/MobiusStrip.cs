@@ -12,11 +12,8 @@ public class MobiusStrip : MonoBehaviour
     public float stripWidth = 1.0f;
     public float radius = 3.5f;
     public float modulation = 0.1f;
-    public int frequency = 15;
-
-    public float a = 0.0f;
-    public float u = 0.0f;
-    public float v = 0.0f;
+    public float frequency = 15;
+    
     // Use this for initialization
     void Start()
     {

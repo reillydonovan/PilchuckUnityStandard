@@ -13,7 +13,7 @@ public class Mobious : MonoBehaviour
     public float stripWidth = 1.0f;
     public float radius = 3.5f;
     public float modulation = 0.1f;
-    public int frequency = 15;
+    public float frequency = 15;
     // Use this for initialization
     void Start()
     {
