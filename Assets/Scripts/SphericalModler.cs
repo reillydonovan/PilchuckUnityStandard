@@ -9,6 +9,9 @@ public class SphericalModler : MonoBehaviour
 	// number of verts along the 'latitude'
 	public int thetaDivs = 10;
 
+    public bool torus;
+    public float r1, r2;
+
 	//there are two waves that can be applied to and modify the surface of the spere
 	//there is no reason that these have to be the only two waves, but I cannot decide 
 	//on a approach to easily make ANY number of them in the editor...
@@ -28,9 +31,10 @@ public class SphericalModler : MonoBehaviour
 	public float yMod1Scale = 2.0f; //how big the wave is
 	public float yMod1YOffset = 1.1f; //how big the base of the wave is
 	public float yMod1TimeResponse = 1.0f; //the amount the wave moves with time
+    float radsPerPhiDiv;
 
-	// Use this for initialization
-	void Start () 
+    // Use this for initialization
+    void Start () 
 	{
         Cursor.visible = false;
 		//we need a mesh filter
@@ -57,7 +61,13 @@ public class SphericalModler : MonoBehaviour
 
 		Vector3[] vectors = new Vector3[phiDivs * thetaDivs];
 		Vector2[] uvs = new Vector2[phiDivs * thetaDivs];
-		float radsPerPhiDiv = Mathf.PI/(phiDivs-1);
+        if (torus)
+        {
+             radsPerPhiDiv = 2 * Mathf.PI / (phiDivs - 1);
+        }
+        else {
+             radsPerPhiDiv = Mathf.PI / (phiDivs - 1);
+        }
 		float radsPerThetaDiv = 2.0f*Mathf.PI/thetaDivs;
 
 		float seconds = Time.timeSinceLevelLoad;
@@ -75,15 +85,33 @@ public class SphericalModler : MonoBehaviour
 				float radius = GetRadius(phi,theta,seconds);
 				//add uvs so that we can texture the mesh if we want
 				uvs[vIndex] = new Vector2(j*1.0f/thetaDivs,i*1.0f/phiDivs);
-				//create a vertex 
-				//
-				//optimization alert: since the only thing that changes here is the radius
-				//(when the number of divisions stays the same) we could cache these numbers
-				// and use a shader to create and apply the variations in radius and compute 
-				// the normals.
-				vectors[vIndex++] = new Vector3(radius*Mathf.Sin(phi)*Mathf.Cos(theta),
-												radius*Mathf.Sin(phi)*Mathf.Sin(theta),
-												radius*Mathf.Cos(phi));				
+                //create a vertex 
+
+                if (torus)
+                {
+
+                    float x = (r1 * radius + r2 * Mathf.Cos(phi)) * Mathf.Cos(theta);
+                    float y = (r1 * radius + r2 * Mathf.Cos(phi)) * Mathf.Sin(theta);
+                    float z = r2 * Mathf.Sin(phi);
+                    vectors[vIndex++] = new Vector3(x, y, z);
+
+                    /*   float x = (r1 * radius + r2 *  Mathf.Cos(theta)) * Mathf.Cos(phi);
+                    float y = (r1 * radius  + r2 * Mathf.Cos(theta)) * Mathf.Sin(phi);
+                    float z =  r2 * Mathf.Sin(theta);*/
+                }
+
+                else
+                {
+                    //
+                    //optimization alert: since the only thing that changes here is the radius
+                    //(when the number of divisions stays the same) we could cache these numbers
+                    // and use a shader to create and apply the variations in radius and compute 
+                    // the normals.
+                    vectors[vIndex++] = new Vector3(radius * Mathf.Sin(phi) * Mathf.Cos(theta),
+                                                    radius * Mathf.Sin(phi) * Mathf.Sin(theta),
+                                                    radius * Mathf.Cos(phi));
+                }
+
 			}
 		}
 		m.vertices = vectors;

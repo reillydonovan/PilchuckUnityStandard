@@ -21,11 +21,11 @@ Material:
     m_TexEnvs: []
     m_Floats:
     - _Glossiness: 2.36
-    - _Harmonics: 94.18
-    - _Iterations: 118.41
+    - _Harmonics: 4.9
+    - _Iterations: 115.75
     - _Metallic: -3.93
-    - _Offset: -0.9
-    - _Tesselation: 2
+    - _Offset: -0.2
+    - _Tesselation: 1
     m_Colors:
     - _ColorHigh: {r: 1, g: 1, b: 1, a: 1}
     - _ColorLow: {r: 0, g: 0, b: 0, a: 1}

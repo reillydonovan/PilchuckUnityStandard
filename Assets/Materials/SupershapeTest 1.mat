@@ -113,17 +113,17 @@ Material:
     - _ScrollXSpeed: 0
     - _ScrollYSpeed: 0
     - _Shape1A: 1
-    - _Shape1B: 1
-    - _Shape1M: 10
-    - _Shape1N1: 1
-    - _Shape1N2: 1
-    - _Shape1N3: 1
+    - _Shape1B: 23.5
+    - _Shape1M: 0.3
+    - _Shape1N1: 12.5
+    - _Shape1N2: 2.9
+    - _Shape1N3: -17.5
     - _Shape2A: 1
     - _Shape2B: 1
     - _Shape2M: 1
-    - _Shape2N1: 1
-    - _Shape2N2: 1
-    - _Shape2N3: 1
+    - _Shape2N1: 2.9
+    - _Shape2N2: 0.2
+    - _Shape2N3: 8.4
     - _Shininess: 0
     - _SmoothnessTextureChannel: 0
     - _SpecPower: 3
@@ -146,16 +146,16 @@ Material:
     - _WaveValue2: 20
     - _WaveValue3: 20
     - _ZWrite: 1
-    - xMod1Period: 10
+    - xMod1Period: 1
     - xMod1PhaseOffset: 1
-    - xMod1Scale: 0.3
-    - xMod1TimeResponse: 5
-    - xMod1YOffset: 0.3
-    - yMod1Period: 0
-    - yMod1PhaseOffset: 0
-    - yMod1Scale: 0.3
-    - yMod1TimeResponse: 0
-    - yMod1YOffset: 0
+    - xMod1Scale: 1
+    - xMod1TimeResponse: 1
+    - xMod1YOffset: 1
+    - yMod1Period: 9.2
+    - yMod1PhaseOffset: 1
+    - yMod1Scale: 1
+    - yMod1TimeResponse: 1
+    - yMod1YOffset: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _ColorA: {r: 1, g: 0, b: 0.04301071, a: 1}
