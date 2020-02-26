@@ -9,6 +9,8 @@ namespace com.rfilkov.components
 {
     public class BlobDetector : MonoBehaviour
     {
+        public GameObject blobTestObject;
+
         [Tooltip("Depth sensor index - 0 is the 1st one, 1 - the 2nd one, etc.")]
         public int sensorIndex = 0;
 
@@ -182,6 +184,7 @@ namespace com.rfilkov.components
 
             // calculate the foreground rectangle
             foregroundImgRect = kinectManager.GetForegroundRectDepth(sensorIndex, foregroundCamera);
+            blobTestObject.SetActive(false);
         }
 
         void Update()
@@ -206,6 +209,16 @@ namespace com.rfilkov.components
             {
                 // instantiates representative blob objects for each blog
                 InstantiateBlobObjects();
+            }
+
+            if(blobObjects.Count > 0)
+            {
+                blobTestObject.SetActive(true);
+
+            }
+            else
+            {
+                blobTestObject.SetActive(false);
             }
         }
 
