@@ -58,3 +58,5 @@ sysinfo.txt
 # Crashlytics generated file
 crashlytics-build.properties
 
+cudnn64_7.dll
+dnn_model_2_0.onnx
