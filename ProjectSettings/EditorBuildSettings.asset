@@ -5,9 +5,12 @@ EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
   m_Scenes:
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Pilchuck/Mobius.unity
     guid: 02d1ebfd5d6b7c748a1ae2783dd05982
+  - enabled: 1
+    path: Assets/Scenes/Pilchuck/PeppersGhostMobius.unity
+    guid: c9b994ce5ea3ddf4c970bf8250578bd5
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 8ac70d31353593e4898d4c46cbf3e815,
       type: 2}
