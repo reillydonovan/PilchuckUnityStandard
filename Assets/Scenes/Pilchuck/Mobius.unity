@@ -3054,9 +3054,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b65af5c318f9e674aa6c513fde0d94c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCam: {fileID: 875626630}
-  audioSource: {fileID: 662072399}
-  aura: {fileID: 0}
   displacementAmount: 0
   shineAmount: 0
   glowAmount: 0
@@ -3065,7 +3062,6 @@ MonoBehaviour:
   speed: 1
   startColor: {r: 0, g: 0, b: 0, a: 0}
   endColor: {r: 0, g: 0, b: 0, a: 0}
-  explosionParticles: {fileID: 0}
 --- !u!1 &645734940
 GameObject:
   m_ObjectHideFlags: 0
@@ -3145,12 +3141,6 @@ MeshFilter:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 645734940}
   m_Mesh: {fileID: 4300034, guid: b576c7f8b7831964f899416965760e6b, type: 3}
---- !u!1 &662072399 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 2724624176864549399, guid: e74178f230a66e94cbec0ecc03886bad,
-    type: 3}
-  m_PrefabInstance: {fileID: 1273760617}
-  m_PrefabAsset: {fileID: 0}
 --- !u!1 &663385943
 GameObject:
   m_ObjectHideFlags: 0
@@ -3734,7 +3724,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &744747383
 Transform:
   m_ObjectHideFlags: 0
@@ -3761,9 +3751,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b65af5c318f9e674aa6c513fde0d94c4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  mainCam: {fileID: 875626630}
-  audioSource: {fileID: 662072399}
-  aura: {fileID: 0}
   displacementAmount: 0
   shineAmount: 0
   glowAmount: 0
@@ -3772,7 +3759,6 @@ MonoBehaviour:
   speed: 1
   startColor: {r: 0, g: 0, b: 0, a: 0}
   endColor: {r: 0, g: 0, b: 0, a: 0}
-  explosionParticles: {fileID: 0}
 --- !u!135 &744747385
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -5837,6 +5823,21 @@ PrefabInstance:
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2724624175765142664, guid: e74178f230a66e94cbec0ecc03886bad,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 2724624175765142664, guid: e74178f230a66e94cbec0ecc03886bad,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 0.04
+      objectReference: {fileID: 0}
+    - target: {fileID: 2724624175765142664, guid: e74178f230a66e94cbec0ecc03886bad,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 0.04
       objectReference: {fileID: 0}
     - target: {fileID: 2724624175765142668, guid: e74178f230a66e94cbec0ecc03886bad,
         type: 3}
