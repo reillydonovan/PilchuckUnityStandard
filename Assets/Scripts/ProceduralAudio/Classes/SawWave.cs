@@ -8,16 +8,15 @@ using System.Collections.Generic;
 using UnityEngine;
 using System;
 
-public class SawWave
-{
-    /* This class creates an approximation of a Saw Wave, by using harmonics of a sinus wave.
+public class SawWave{
+	/* This class creates an approximation of a Saw Wave, by using harmonics of a sinus wave.
 	This way the actual shape of the wave is smoother than an absolute saw shape, thus reducing
 	some of the noise this would create.
 	The levels of each harmonic are stored in the sawHarmonicLevels Array */
 
-    double[] sawHarmonicLevels = new double[]
-    {
-        1.0, 		// level of 1st harmonic
+	double[] sawHarmonicLevels = new double[] 
+	{
+		1.0, 		// level of 1st harmonic
 		0.5,		// level of 2nd harmonic
 		0.33333333,	// level of 3rd harmonic
 		0.25,		// level of 4th harmonic
@@ -35,24 +34,20 @@ public class SawWave
 		0.0625			// level of 16th harmonic
 	};
 
-    SinusWave[] subSignals;
+	SinusWave[] subSignals;	
 
-    public SawWave()
-    {
-        subSignals = new SinusWave[16];
-        for (int i = 0; i < 16; i++)
-        {
-            subSignals[i] = new SinusWave();
-        }
-    }
+	public SawWave(){
+		subSignals = new SinusWave[16];
+		for (int i = 0; i < 16; i++) {
+			subSignals [i] = new SinusWave ();
+		}
+	}
 
-    public double calculateSignalValue(double newSignalTime, double newSignalFrequency)
-    {
-        double signalSum = 0.0;
-        for (int i = 0; i < subSignals.Length; i++)
-        {
-            signalSum += sawHarmonicLevels[i] * subSignals[i].calculateSignalValue(newSignalTime, newSignalFrequency * (i + 1), 1.0, 1.0);
-        }
-        return signalSum;
-    }
+	public double calculateSignalValue(double newSignalTime, double newSignalFrequency){
+		double signalSum = 0.0;
+		for (int i = 0; i < subSignals.Length; i++) {
+			signalSum += sawHarmonicLevels[i] * subSignals [i].calculateSignalValue (newSignalTime, newSignalFrequency * (i+1));
+		}
+		return signalSum;
+	}
 }
