@@ -7,7 +7,7 @@ Material:
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   m_Name: Glass1
-  m_Shader: {fileID: 4800000, guid: 7f205347e1ebaf14c97b28211ae55dbe, type: 3}
+  m_Shader: {fileID: 4800000, guid: 2e8fac5d898c45b4abb7ca08510bd975, type: 3}
   m_ShaderKeywords: _MK_BUMP_MAP _MK_LIGHTMODEL_BLINN_PHONG _MK_REFLECTIVE_DEFAULT
     _MK_RIM _MK_SPECULAR_MAP _USEREFLECTION_ON _USERIM_ON
   m_LightmapFlags: 4
@@ -81,10 +81,10 @@ Material:
     - _GlossyReflections: 1
     - _LightModel: 3
     - _MKEditorShowDetailBehavior: 0
-    - _MKEditorShowLightBehavior: 0
+    - _MKEditorShowLightBehavior: 1
     - _MKEditorShowMainBehavior: 1
     - _MKEditorShowReflectionBehavior: 1
-    - _MKEditorShowRenderBehavior: 0
+    - _MKEditorShowRenderBehavior: 1
     - _MKEditorShowRimBehavior: 0
     - _MKEditorShowSpecularBehavior: 0
     - _MKEditorShowTranslucentBehavior: 0
@@ -96,8 +96,8 @@ Material:
     - _ReflectIntensity: 0.25
     - _RenderMode: 0
     - _RimIntensity: 0.116
-    - _RimSize: 3.21
-    - _ShadowIntensity: 0.1
+    - _RimSize: 3.37
+    - _ShadowIntensity: 0.508
     - _Shininess: 0.115
     - _SmoothnessTextureChannel: 0
     - _SpecularHighlights: 1
