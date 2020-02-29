@@ -17,12 +17,13 @@ public class Mobious : MonoBehaviour
 
     [Header("Displacement Controls")]
     // public GameObject mainCam;
-    // public GameObject audioSource;
+    public GameObject audioSource;
     //  public GameObject aura;
     public float displacementAmount;
     public float shineAmount;
     public float glowAmount;
     public float audioAmount;
+    public float audioLerpUp;
     public float hueAmount;
 
     //public Vector3 auraScale;
@@ -130,13 +131,16 @@ Mathf.Sin(tm + curRingRad * frequency));
         shineAmount = Mathf.Lerp(shineAmount, 0, Time.deltaTime);
         glowAmount = Mathf.Lerp(glowAmount, 0, Time.deltaTime);
         hueAmount = Mathf.Lerp(hueAmount, 0, Time.deltaTime);
-        audioAmount = Mathf.Lerp(audioAmount, 1, Time.deltaTime);
+        audioAmount = Mathf.Lerp(audioAmount, 0, Time.deltaTime);
+        audioLerpUp = Mathf.Lerp(0, audioLerpUp, Time.deltaTime);
         // superShape.GetComponent<MeshRenderer>().material.SetFloat("_WaveValue1", displacementAmount);
         meshRender.material.SetFloat("_WaveValue1", displacementAmount);
         meshRender.material.SetFloat("_Emission", shineAmount);
         meshRender.material.SetFloat("_Hue", hueAmount);
         //  mainCam.GetComponent<MKGlow>().bloomIntensity = glowAmount;
-        // audioSource.GetComponent<AudioSource>().pitch = audioAmount;
+        //  audioSource.GetComponent<AudioSource>().pitch = audioAmount;
+        audioSource.GetComponent<ProceduralAudioController>().amplitudeModulationOscillatorFrequency = audioAmount;
+        audioSource.GetComponent<ProceduralAudioController>().mainFrequency = audioAmount + 100.0f;
 
         // aura.transform.localScale = auraScale;
 
@@ -148,7 +152,8 @@ Mathf.Sin(tm + curRingRad * frequency));
             shineAmount += .5f;
             glowAmount += 1f;
             hueAmount += .3f;
-            audioAmount += .5f;
+            audioAmount += 10f;
+            audioLerpUp += 10f;
             //    explosionParticles.Play();
             //   auraScale += new Vector3(1f, 0, 0);
             // Debug.Log("Pressed A");

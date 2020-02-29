@@ -2777,6 +2777,11 @@ PrefabInstance:
       propertyPath: divisions
       value: 10000
       objectReference: {fileID: 0}
+    - target: {fileID: 2724624175765142671, guid: e74178f230a66e94cbec0ecc03886bad,
+        type: 3}
+      propertyPath: audioSource
+      value: 
+      objectReference: {fileID: 1569800015}
     - target: {fileID: 2724624176864549392, guid: e74178f230a66e94cbec0ecc03886bad,
         type: 3}
       propertyPath: m_audioClip
@@ -10103,7 +10108,7 @@ MonoBehaviour:
   squareAudioWaveIntensity: 0
   useSawAudioWave: 1
   sawAudioWaveIntensity: 0
-  useAmplitudeModulation: 0
+  useAmplitudeModulation: 1
   amplitudeModulationOscillatorFrequency: 0.2
   useFrequencyModulation: 1
   frequencyModulationOscillatorFrequency: 0.2
