@@ -5,11 +5,13 @@ using UnityEngine;
 public class FlipCamera : MonoBehaviour
 {
     // Start is called before the first frame update
+    private Camera thisCamera;
     void Start()
     {
-        Matrix4x4 mat = Camera.main.projectionMatrix;
+        thisCamera = GetComponent<Camera>();
+        Matrix4x4 mat = thisCamera.projectionMatrix;
         mat *= Matrix4x4.Scale(new Vector3(-1, 1, 1));
-        Camera.main.projectionMatrix = mat;
+        thisCamera.projectionMatrix = mat;
         GL.invertCulling = true;
     }
 
