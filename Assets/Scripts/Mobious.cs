@@ -7,17 +7,43 @@ using UnityEngine;
 public class Mobious : MonoBehaviour
 {
 
-
+    [Header("Geometry Values")]
     //    private Mesh mesh;
     public int divisions = 200;
     public float stripWidth = 1.0f;
     public float radius = 3.5f;
     public float modulation = 0.1f;
     public float frequency = 15;
+
+    [Header("Displacement Controls")]
+    // public GameObject mainCam;
+    // public GameObject audioSource;
+    //  public GameObject aura;
+    public float displacementAmount;
+    public float shineAmount;
+    public float glowAmount;
+    public float audioAmount;
+    public float hueAmount;
+
+    //public Vector3 auraScale;
+
+    public float speed = 1.0f;
+    public Color startColor;
+    public Color endColor;
+    float startTime;
+    // public float m1Start;
+    // public float m1End;
+    // public float m1ChangeAmount;
+    // static float t = 0.0f;
+
+    // public ParticleSystem explosionParticles;
+    MeshRenderer meshRender;
     // Use this for initialization
     void Start()
     {
         GetComponent<MeshFilter>().mesh = new Mesh();
+        meshRender = GetComponent<MeshRenderer>();
+        startTime = Time.time;
     }
 
     // Update is called once per frame
@@ -25,6 +51,7 @@ public class Mobious : MonoBehaviour
     {
         // radius = Mathf.Sin(Time.deltaTime);
         this.UpdateMesh(GetComponent<MeshFilter>().mesh);
+        CollisionController();
     }
 
      Mesh UpdateMesh(Mesh m)
@@ -89,6 +116,58 @@ Mathf.Sin(tm + curRingRad * frequency));
         m.normals = normals;
         //        newMesh.RecalculateNormals();
         return m;
+    }
+
+    private void CollisionController()
+    {
+        float t = (Time.time - startTime) * speed;
+        meshRender.material.color = Color.Lerp(startColor, endColor, t);
+        // t += 0.5f * Time.deltaTime;
+        // m1ChangeAmount = Mathf.Lerp(m1Start, m1End, Time.deltaTime);
+        //   meshRender.material.SetFloat("_Shape1M", m1ChangeAmount);
+        // auraScale = Mathf.Lerp(auraScale, 0, Time.deltaTime);
+        displacementAmount = Mathf.Lerp(displacementAmount, 0, Time.deltaTime);
+        shineAmount = Mathf.Lerp(shineAmount, 0, Time.deltaTime);
+        glowAmount = Mathf.Lerp(glowAmount, 0, Time.deltaTime);
+        hueAmount = Mathf.Lerp(hueAmount, 0, Time.deltaTime);
+        audioAmount = Mathf.Lerp(audioAmount, 1, Time.deltaTime);
+        // superShape.GetComponent<MeshRenderer>().material.SetFloat("_WaveValue1", displacementAmount);
+        meshRender.material.SetFloat("_WaveValue1", displacementAmount);
+        meshRender.material.SetFloat("_Emission", shineAmount);
+        meshRender.material.SetFloat("_Hue", hueAmount);
+        //  mainCam.GetComponent<MKGlow>().bloomIntensity = glowAmount;
+        // audioSource.GetComponent<AudioSource>().pitch = audioAmount;
+
+        // aura.transform.localScale = auraScale;
+
+        if (Input.GetKeyDown(KeyCode.A))
+        {
+            Debug.Log("Pressed A");
+            // m1ChangeAmount += .1f;
+            displacementAmount += .1f;
+            shineAmount += .5f;
+            glowAmount += 1f;
+            hueAmount += .3f;
+            audioAmount += .5f;
+            //    explosionParticles.Play();
+            //   auraScale += new Vector3(1f, 0, 0);
+            // Debug.Log("Pressed A");
+        }
+    }
+
+    private void OnCollisionEnter(Collision collision)
+    {
+        //  Debug.Log(collision.collider.name);
+        if (collision.collider.tag == "Collision")
+        {
+            //   Debug.Log("we hit an obstacle");
+            displacementAmount += .1f;
+            shineAmount += .5f;
+            glowAmount += 1f;
+            audioAmount += .5f;
+            //  explosionParticles.Play();
+            Debug.Log("On Collision Enter");
+        }
     }
 
     private void OnDrawGizmos()
