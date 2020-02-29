@@ -8,9 +8,9 @@ public class MobiusDisplacementController : MonoBehaviour
 
 {
 
-    public GameObject mainCam;
-    public GameObject audioSource;
-    public GameObject aura;
+   // public GameObject mainCam;
+   // public GameObject audioSource;
+  //  public GameObject aura;
     public float displacementAmount;
     public float shineAmount;
     public float glowAmount;
@@ -28,7 +28,7 @@ public class MobiusDisplacementController : MonoBehaviour
     // public float m1ChangeAmount;
     // static float t = 0.0f;
 
-    public ParticleSystem explosionParticles;
+   // public ParticleSystem explosionParticles;
     MeshRenderer meshRender;
     // Start is called before the first frame update
     void Start()
@@ -56,20 +56,21 @@ public class MobiusDisplacementController : MonoBehaviour
         meshRender.material.SetFloat("_WaveValue1", displacementAmount);
         meshRender.material.SetFloat("_Emission", shineAmount);
         meshRender.material.SetFloat("_Hue", hueAmount);
-        mainCam.GetComponent<MKGlow>().bloomIntensity = glowAmount;
-        audioSource.GetComponent<AudioSource>().pitch = audioAmount;
+      //  mainCam.GetComponent<MKGlow>().bloomIntensity = glowAmount;
+       // audioSource.GetComponent<AudioSource>().pitch = audioAmount;
 
        // aura.transform.localScale = auraScale;
 
         if (Input.GetKeyDown(KeyCode.A))
         {
+            Debug.Log("Pressed A");
             // m1ChangeAmount += .1f;
             displacementAmount += .1f;
             shineAmount += .5f;
             glowAmount += 1f;
             hueAmount += .3f;
             audioAmount += .5f;
-            explosionParticles.Play();
+        //    explosionParticles.Play();
             //   auraScale += new Vector3(1f, 0, 0);
             // Debug.Log("Pressed A");
         }
@@ -85,7 +86,8 @@ public class MobiusDisplacementController : MonoBehaviour
             shineAmount += .5f;
             glowAmount += 1f;
             audioAmount += .5f;
-            explosionParticles.Play();
+          //  explosionParticles.Play();
+            Debug.Log("On Collision Enter");
         }
     }
 }
