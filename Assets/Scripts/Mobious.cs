@@ -31,6 +31,7 @@ public class Mobious : MonoBehaviour
     public float timeDivision = 1;
     public float frequencyDisplacementAmount;
     private float rotateDisplacementAmount;
+   // private float transformDisplacementAmount;
 
     //public GameObject leftHandMesh, rightHandMesh;
     //private float leftHandMeshDisplacement, rightHandMeshDisplacement;
@@ -48,6 +49,7 @@ public class Mobious : MonoBehaviour
 
     // public ParticleSystem explosionParticles;
     MeshRenderer meshRender;
+    //MeshCollider meshCollide;
     // Use this for initialization
     void Start()
     {
@@ -56,6 +58,7 @@ public class Mobious : MonoBehaviour
         rotateZ = Time.deltaTime;
         GetComponent<MeshFilter>().mesh = new Mesh();
         meshRender = GetComponent<MeshRenderer>();
+       // meshCollide = GetComponent<MeshCollider>();
         startTime = Time.time;
     }
 
@@ -65,6 +68,7 @@ public class Mobious : MonoBehaviour
         // radius = Mathf.Sin(Time.deltaTime);
         transform.Rotate(rotateX, rotateY, rotateZ); ;
         this.UpdateMesh(GetComponent<MeshFilter>().mesh);
+        //this.GetComponent<MeshCollider>().sharedMesh = this.GetComponent<MeshFilter>().mesh;
         CollisionController();
     }
 
@@ -161,6 +165,7 @@ Mathf.Sin(tm + curRingRad * frequency));
         modulationDisplacmentAmount = Mathf.Lerp(modulationDisplacmentAmount, 1, Time.deltaTime / timeDivision);
         frequencyDisplacementAmount = Mathf.Lerp(frequencyDisplacementAmount, 1, Time.deltaTime / timeDivision);
         rotateDisplacementAmount = Mathf.Lerp(rotateDisplacementAmount, .1f, Time.deltaTime / timeDivision);
+       // transformDisplacementAmount = Mathf.Lerp(transformDisplacementAmount, 0, Time.deltaTime / timeDivision);
 
         rotateX = rotateDisplacementAmount;
         rotateY = rotateDisplacementAmount;
@@ -170,6 +175,7 @@ Mathf.Sin(tm + curRingRad * frequency));
         modulation = modulationDisplacmentAmount;
         frequency = frequencyDisplacementAmount;
         stripWidth = stripWidthDisplacementAmount;
+       // transform.localScale = new Vector3(.004f - transformDisplacementAmount, .004f - transformDisplacementAmount, .004f - transformDisplacementAmount);
 
         // aura.transform.localScale = auraScale;
 
@@ -206,6 +212,7 @@ Mathf.Sin(tm + curRingRad * frequency));
             frequencyDisplacementAmount += .1f;
             stripWidthDisplacementAmount += 0.5f / timeDivision;
             rotateDisplacementAmount += 0.1f;
+          //  transformDisplacementAmount += .001f / timeDivision;
             //  explosionParticles.Play();
             Debug.Log("On Collision Enter");
         }
