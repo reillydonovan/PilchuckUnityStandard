@@ -31,6 +31,9 @@ public class Mobious : MonoBehaviour
     public float frequencyDisplacementAmount;
     private float rotateDisplacementAmount;
 
+    //public GameObject leftHandMesh, rightHandMesh;
+    //private float leftHandMeshDisplacement, rightHandMeshDisplacement;
+
     //public Vector3 auraScale;
 
     public float speed = 1.0f;
@@ -143,7 +146,8 @@ Mathf.Sin(tm + curRingRad * frequency));
         audioAmount = Mathf.Lerp(audioAmount, 0, Time.deltaTime);
         audioLerpUp = Mathf.Lerp(0, audioLerpUp, Time.deltaTime);
         // superShape.GetComponent<MeshRenderer>().material.SetFloat("_WaveValue1", displacementAmount);
-        meshRender.material.SetFloat("_WaveValue1", displacementAmount);
+        //rightHandMesh.GetComponent<SkinnedMeshRenderer>().material.SetFloat("_WaveValue1", displacementAmount);
+       // leftHandMesh.GetComponent<SkinnedMeshRenderer>().material.SetFloat("_WaveValue1", displacementAmount);
         meshRender.material.SetFloat("_Emission", shineAmount);
         meshRender.material.SetFloat("_Hue", hueAmount);
         //  mainCam.GetComponent<MKGlow>().bloomIntensity = glowAmount;
