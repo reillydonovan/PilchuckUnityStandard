@@ -101,8 +101,9 @@ public class MobiusManager : MonoBehaviour
             _mobius.modulation = Mathf.Lerp(currentValue.modulation, targetValue.modulation, timeRatio);
             _mobius.frequency = Mathf.Lerp(currentValue.frequency, targetValue.frequency, timeRatio);
             _mobius.radius += this.GetComponent<Mobious>().radiusDisplacementAmount;
+           
           //  _mobius.modulation += this.GetComponent<Mobious>().modulationDisplacmentAmount;
-          //  _mobius.stripWidth += this.GetComponent<Mobious>().stripWidthDisplacementAmount;
+            _mobius.stripWidth += this.GetComponent<Mobious>().stripWidthDisplacementAmount;
            // _mobius.frequency += this.GetComponent<Mobious>().frequencyDisplacementAmount;
          
             if (timeRatio == 1.0f)

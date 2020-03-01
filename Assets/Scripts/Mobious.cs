@@ -14,7 +14,7 @@ public class Mobious : MonoBehaviour
     public float radius = 3.5f;
     public float modulation = 0.1f;
     public float frequency = 15;
-
+    private float rotateX, rotateY, rotateZ;
     [Header("Displacement Controls")]
     // public GameObject mainCam;
     public GameObject audioSource;
@@ -29,6 +29,7 @@ public class Mobious : MonoBehaviour
     public float radiusDisplacementAmount;
     public float modulationDisplacmentAmount;
     public float frequencyDisplacementAmount;
+    private float rotateDisplacementAmount;
 
     //public Vector3 auraScale;
 
@@ -46,6 +47,9 @@ public class Mobious : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        rotateX = Time.deltaTime;
+        rotateY = Time.deltaTime;
+        rotateZ = Time.deltaTime;
         GetComponent<MeshFilter>().mesh = new Mesh();
         meshRender = GetComponent<MeshRenderer>();
         startTime = Time.time;
@@ -55,6 +59,7 @@ public class Mobious : MonoBehaviour
     void Update()
     {
         // radius = Mathf.Sin(Time.deltaTime);
+        transform.Rotate(rotateX, rotateY, rotateZ); ;
         this.UpdateMesh(GetComponent<MeshFilter>().mesh);
         CollisionController();
     }
@@ -146,16 +151,20 @@ Mathf.Sin(tm + curRingRad * frequency));
         audioSource.GetComponent<ProceduralAudioController>().amplitudeModulationOscillatorFrequency = audioAmount;
         audioSource.GetComponent<ProceduralAudioController>().mainFrequency = audioAmount + 100.0f;
 
-        stripWidthDisplacementAmount = Mathf.Lerp(stripWidthDisplacementAmount, 2, Time.deltaTime);
-        radiusDisplacementAmount = Mathf.Lerp(radiusDisplacementAmount, 3, Time.deltaTime);
+        stripWidthDisplacementAmount = Mathf.Lerp(stripWidthDisplacementAmount, 1, Time.deltaTime);
+        radiusDisplacementAmount = Mathf.Lerp(radiusDisplacementAmount, 10, Time.deltaTime);
         modulationDisplacmentAmount = Mathf.Lerp(modulationDisplacmentAmount, 1, Time.deltaTime);
         frequencyDisplacementAmount = Mathf.Lerp(frequencyDisplacementAmount, 1, Time.deltaTime);
+        rotateDisplacementAmount = Mathf.Lerp(rotateDisplacementAmount, .1f, Time.deltaTime);
 
+        rotateX = rotateDisplacementAmount;
+        rotateY = rotateDisplacementAmount;
+        rotateZ = rotateDisplacementAmount;
 
         radius = radiusDisplacementAmount;
-      //  modulation = modulationDisplacmentAmount;
-       // frequency = frequencyDisplacementAmount;
-      //  stripWidth = stripWidthDisplacementAmount;
+        modulation = modulationDisplacmentAmount;
+        frequency = frequencyDisplacementAmount;
+        stripWidth = stripWidthDisplacementAmount;
 
         // aura.transform.localScale = auraScale;
 
@@ -170,7 +179,7 @@ Mathf.Sin(tm + curRingRad * frequency));
             audioAmount += 10f;
             audioLerpUp += 10f;
             radiusDisplacementAmount += .1f;
-            stripWidthDisplacementAmount += .2f;
+            stripWidthDisplacementAmount += 0.5f;
             //    explosionParticles.Play();
             //   auraScale += new Vector3(1f, 0, 0);
             // Debug.Log("Pressed A");
@@ -187,10 +196,11 @@ Mathf.Sin(tm + curRingRad * frequency));
             shineAmount += .5f;
             glowAmount += 1f;
             audioAmount += .5f;
-            modulationDisplacmentAmount += .3f;
-            radiusDisplacementAmount += 2.0f;
-            frequencyDisplacementAmount += .3f;
-            stripWidthDisplacementAmount += .2f;
+            modulationDisplacmentAmount += .05f;
+            radiusDisplacementAmount += 1.0f;
+            frequencyDisplacementAmount += .1f;
+            stripWidthDisplacementAmount += 0.5f;
+            rotateDisplacementAmount += 0.1f;
             //  explosionParticles.Play();
             Debug.Log("On Collision Enter");
         }
