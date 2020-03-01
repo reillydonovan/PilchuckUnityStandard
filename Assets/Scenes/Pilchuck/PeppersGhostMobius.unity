@@ -2700,7 +2700,7 @@ PrefabInstance:
     - target: {fileID: 2724624175765142664, guid: e74178f230a66e94cbec0ecc03886bad,
         type: 3}
       propertyPath: m_LocalPosition.z
-      value: 0.4
+      value: 0.3
       objectReference: {fileID: 0}
     - target: {fileID: 2724624175765142664, guid: e74178f230a66e94cbec0ecc03886bad,
         type: 3}
@@ -2745,17 +2745,17 @@ PrefabInstance:
     - target: {fileID: 2724624175765142664, guid: e74178f230a66e94cbec0ecc03886bad,
         type: 3}
       propertyPath: m_LocalScale.x
-      value: 0.004
+      value: 0.007
       objectReference: {fileID: 0}
     - target: {fileID: 2724624175765142664, guid: e74178f230a66e94cbec0ecc03886bad,
         type: 3}
       propertyPath: m_LocalScale.y
-      value: 0.004
+      value: 0.007
       objectReference: {fileID: 0}
     - target: {fileID: 2724624175765142664, guid: e74178f230a66e94cbec0ecc03886bad,
         type: 3}
       propertyPath: m_LocalScale.z
-      value: 0.004
+      value: 0.007
       objectReference: {fileID: 0}
     - target: {fileID: 2724624175765142668, guid: e74178f230a66e94cbec0ecc03886bad,
         type: 3}
@@ -2802,6 +2802,11 @@ PrefabInstance:
       propertyPath: rightHandMesh
       value: 
       objectReference: {fileID: 1960023297}
+    - target: {fileID: 2724624175765142671, guid: e74178f230a66e94cbec0ecc03886bad,
+        type: 3}
+      propertyPath: timeDivision
+      value: 5
+      objectReference: {fileID: 0}
     - target: {fileID: 2724624176864549392, guid: e74178f230a66e94cbec0ecc03886bad,
         type: 3}
       propertyPath: m_audioClip
