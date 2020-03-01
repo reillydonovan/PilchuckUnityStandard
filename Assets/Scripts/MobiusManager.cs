@@ -97,10 +97,13 @@ public class MobiusManager : MonoBehaviour
             float timeRatio = Mathf.Min(deltaTime / timeFade, 1.0f);
             _mobius.divisions = (int)Mathf.Lerp(currentValue.divisions, targetValue.divisions, timeRatio);
             _mobius.stripWidth = Mathf.Lerp(currentValue.stripWidth, targetValue.stripWidth, timeRatio);
-            _mobius.radius = Mathf.Lerp(currentValue.radius, targetValue.radius, timeRatio);
+           // _mobius.radius = Mathf.Lerp(currentValue.radius, targetValue.radius, timeRatio);
             _mobius.modulation = Mathf.Lerp(currentValue.modulation, targetValue.modulation, timeRatio);
             _mobius.frequency = Mathf.Lerp(currentValue.frequency, targetValue.frequency, timeRatio);
-
+            _mobius.radius += this.GetComponent<Mobious>().radiusDisplacementAmount;
+          //  _mobius.modulation += this.GetComponent<Mobious>().modulationDisplacmentAmount;
+          //  _mobius.stripWidth += this.GetComponent<Mobious>().stripWidthDisplacementAmount;
+           // _mobius.frequency += this.GetComponent<Mobious>().frequencyDisplacementAmount;
          
             if (timeRatio == 1.0f)
             {

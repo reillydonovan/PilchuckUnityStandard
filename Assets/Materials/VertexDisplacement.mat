@@ -87,8 +87,8 @@ Material:
     - _UVSec: 0
     - _VertexAnimOffset: 0
     - _WaveValue1: 1
-    - _WaveValue2: 1
-    - _WaveValue3: 1
+    - _WaveValue2: 16.3
+    - _WaveValue3: 26
     - _WaveValueX1: 0
     - _WaveValueX2: 0
     - _WaveValueX3: 0

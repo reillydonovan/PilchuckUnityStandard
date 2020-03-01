@@ -25,6 +25,10 @@ public class Mobious : MonoBehaviour
     public float audioAmount;
     public float audioLerpUp;
     public float hueAmount;
+    public float stripWidthDisplacementAmount;
+    public float radiusDisplacementAmount;
+    public float modulationDisplacmentAmount;
+    public float frequencyDisplacementAmount;
 
     //public Vector3 auraScale;
 
@@ -142,6 +146,17 @@ Mathf.Sin(tm + curRingRad * frequency));
         audioSource.GetComponent<ProceduralAudioController>().amplitudeModulationOscillatorFrequency = audioAmount;
         audioSource.GetComponent<ProceduralAudioController>().mainFrequency = audioAmount + 100.0f;
 
+        stripWidthDisplacementAmount = Mathf.Lerp(stripWidthDisplacementAmount, 2, Time.deltaTime);
+        radiusDisplacementAmount = Mathf.Lerp(radiusDisplacementAmount, 3, Time.deltaTime);
+        modulationDisplacmentAmount = Mathf.Lerp(modulationDisplacmentAmount, 1, Time.deltaTime);
+        frequencyDisplacementAmount = Mathf.Lerp(frequencyDisplacementAmount, 1, Time.deltaTime);
+
+
+        radius = radiusDisplacementAmount;
+      //  modulation = modulationDisplacmentAmount;
+       // frequency = frequencyDisplacementAmount;
+      //  stripWidth = stripWidthDisplacementAmount;
+
         // aura.transform.localScale = auraScale;
 
         if (Input.GetKeyDown(KeyCode.A))
@@ -154,6 +169,8 @@ Mathf.Sin(tm + curRingRad * frequency));
             hueAmount += .3f;
             audioAmount += 10f;
             audioLerpUp += 10f;
+            radiusDisplacementAmount += .1f;
+            stripWidthDisplacementAmount += .2f;
             //    explosionParticles.Play();
             //   auraScale += new Vector3(1f, 0, 0);
             // Debug.Log("Pressed A");
@@ -170,6 +187,10 @@ Mathf.Sin(tm + curRingRad * frequency));
             shineAmount += .5f;
             glowAmount += 1f;
             audioAmount += .5f;
+            modulationDisplacmentAmount += .3f;
+            radiusDisplacementAmount += 2.0f;
+            frequencyDisplacementAmount += .3f;
+            stripWidthDisplacementAmount += .2f;
             //  explosionParticles.Play();
             Debug.Log("On Collision Enter");
         }
