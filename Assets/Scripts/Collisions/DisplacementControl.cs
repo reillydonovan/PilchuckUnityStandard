@@ -8,9 +8,9 @@ public class DisplacementControl : MonoBehaviour
 
 {
 
-    public GameObject mainCam;
-    public GameObject audioSource;
-    public GameObject aura;
+   // public GameObject mainCam;
+  //  public GameObject audioSource;
+  //  public GameObject aura;
     public float displacementAmount;
     public float shineAmount;
     public float glowAmount;
@@ -56,10 +56,10 @@ public class DisplacementControl : MonoBehaviour
         meshRender.material.SetFloat("_WaveValue1", displacementAmount);
         meshRender.material.SetFloat("_Emission", shineAmount);
         meshRender.material.SetFloat("_Hue", hueAmount);
-        mainCam.GetComponent<MKGlow>().bloomIntensity = glowAmount;
-        audioSource.GetComponent<AudioSource>().pitch = audioAmount;
+       // mainCam.GetComponent<MKGlow>().bloomIntensity = glowAmount;
+       // audioSource.GetComponent<AudioSource>().pitch = audioAmount;
         
-        aura.transform.localScale = auraScale;
+       // aura.transform.localScale = auraScale;
 
         if (Input.GetKeyDown(KeyCode.A))
         {
