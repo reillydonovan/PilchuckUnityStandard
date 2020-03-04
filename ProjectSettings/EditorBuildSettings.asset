@@ -12,7 +12,7 @@ EditorBuildSettings:
     path: Assets/Scenes/Pilchuck/PeppersGhostMobius.unity
     guid: c9b994ce5ea3ddf4c970bf8250578bd5
   - enabled: 1
-    path: Assets/Scenes/Pilchuck/SupershapeKinect.unity
+    path: Assets/Scenes/Pilchuck/TorusKinect.unity
     guid: 57e62c8ec79dddf4389faebcf3928a11
   m_configObjects:
     Unity.XR.Oculus.Settings: {fileID: 11400000, guid: 8ac70d31353593e4898d4c46cbf3e815,
