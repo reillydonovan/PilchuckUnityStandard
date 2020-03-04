@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3187c833c6106e54facb6071b57475a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deviceStreamingMode: 0
+  deviceStreamingMode: 1
   deviceIndex: 0
   recordingFile: 
   minDistance: 0.5
@@ -503,7 +503,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8f864d895d4d9c4cb2a9b96bb86c08b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deviceStreamingMode: 1
+  deviceStreamingMode: 0
   deviceIndex: 0
   recordingFile: 
   minDistance: 0.5
@@ -729,11 +729,16 @@ PrefabInstance:
       propertyPath: m_Name
       value: Supertorus
       objectReference: {fileID: 0}
+    - target: {fileID: 8900373565543839640, guid: 83b0b5755c700ee4daf65019e0861676,
+        type: 3}
+      propertyPath: m_TagString
+      value: Collision
+      objectReference: {fileID: 0}
     - target: {fileID: 8900373565543839641, guid: 83b0b5755c700ee4daf65019e0861676,
         type: 3}
       propertyPath: m_Materials.Array.data[0]
       value: 
-      objectReference: {fileID: 2100000, guid: a3436434f4f877948a86f3b5fcd1de35, type: 2}
+      objectReference: {fileID: 2100000, guid: c280418921037da48933110bded36f2a, type: 2}
     - target: {fileID: 8900373565543839644, guid: 83b0b5755c700ee4daf65019e0861676,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -1125,7 +1130,7 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 546633927}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &1077689706
+--- !u!114 &1077689702
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -1134,9 +1139,60 @@ MonoBehaviour:
   m_GameObject: {fileID: 1077689701}
   m_Enabled: 1
   m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 81820328048ea104fb530d19d4d299d0, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  displacementAmount: 0
+  shineAmount: 0
+  glowAmount: 0
+  audioAmount: 0
+  hueAmount: 0
+  auraScale: {x: 0, y: 0, z: 0}
+  speed: 1
+  startColor: {r: 0, g: 0, b: 0, a: 0}
+  endColor: {r: 0, g: 0, b: 0, a: 0}
+  explosionParticles: {fileID: 0}
+--- !u!135 &1077689703
+SphereCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077689701}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Radius: 5
+  m_Center: {x: 0, y: 0, z: 0}
+--- !u!114 &1077689706
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077689701}
+  m_Enabled: 0
+  m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 63d49bd2cbbeca7408487a495d481fe2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!54 &1077689709
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1077689701}
+  serializedVersion: 2
+  m_Mass: 1
+  m_Drag: 0
+  m_AngularDrag: 0.05
+  m_UseGravity: 0
+  m_IsKinematic: 1
+  m_Interpolate: 0
+  m_Constraints: 14
+  m_CollisionDetection: 0
 --- !u!1 &1113136443
 GameObject:
   m_ObjectHideFlags: 0
