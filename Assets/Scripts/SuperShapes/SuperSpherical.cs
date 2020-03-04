@@ -10,6 +10,7 @@ public class SuperSpherical : MonoBehaviour
 	// number of verts along the 'latitude'
 	public int thetaDivs = 10;
 
+    public float r1, r2;
 	//there are two waves that can be applied to and modify the surface of the spere
 	//there is no reason that these have to be the only two waves, but I cannot decide 
 	//on a approach to easily make ANY number of them in the editor...
@@ -29,7 +30,32 @@ public class SuperSpherical : MonoBehaviour
 	public float yMod1Scale = 2.0f; //how big the wave is
 	public float yMod1YOffset = 1.1f; //how big the base of the wave is
 	public float yMod1TimeResponse = 1.0f; //the amount the wave moves with time
-     
+
+    public float offset = 0.0f;
+
+    public float m1 = 0.0f;
+    public float m1change = 0.0f;
+    public float n11 = 0.0f;
+    public float n12 = 0.0f;
+    public float n13 = 0.0f;
+    public float a1 = 1.0f;
+    public float b1 = 1.0f;
+
+    public float m2 = 0.0f;
+    public float m2change = 0.0f;
+    public float n21 = 0.0f;
+    public float n22 = 0.0f;
+    public float n23 = 0.0f;
+    public float a2 = 1.0f;
+    public float b2 = 1.0f;
+
+    public float r = 200.0f;
+    float x = 0.0f;
+    float y = 0.0f;
+    float z = 0.0f;
+    public float a = 0.0f;
+    public float b = 0.0f;
+
 
     //latitude = vertical angle
     //longitude = horizontal angle
@@ -61,7 +87,7 @@ public class SuperSpherical : MonoBehaviour
 
 		Vector3[] vectors = new Vector3[phiDivs * thetaDivs];
 		Vector2[] uvs = new Vector2[phiDivs * thetaDivs];
-		float radsPerPhiDiv = Mathf.PI/(phiDivs-1);
+		float radsPerPhiDiv = 2.0f*Mathf.PI/(phiDivs-1);
 		float radsPerThetaDiv = 2.0f*Mathf.PI/thetaDivs;
 
 		float seconds = Time.timeSinceLevelLoad;
@@ -79,16 +105,57 @@ public class SuperSpherical : MonoBehaviour
 				float radius = GetRadius(phi,theta,seconds);
 				//add uvs so that we can texture the mesh if we want
 				uvs[vIndex] = new Vector2(j*1.0f/thetaDivs,i*1.0f/phiDivs);
-				//create a vertex 
-				//
-				//optimization alert: since the only thing that changes here is the radius
-				//(when the number of divisions stays the same) we could cache these numbers
-				// and use a shader to create and apply the variations in radius and compute 
-				// the normals.
+                //create a vertex 
+                //
+                //optimization alert: since the only thing that changes here is the radius
+                //(when the number of divisions stays the same) we could cache these numbers
+                // and use a shader to create and apply the variations in radius and compute 
+                // the normals.
+                if (torus)
+                {
+                    //   x = Mathf.Cos(lon) * (r1 + r2 * Mathf.Cos(lat));
+                    //   y = Mathf.Sin(lon) * (r1 + r2 * Mathf.Cos(lat));
+                    //   z = r * r2 * Mathf.Sin(lat);
+                    //  vectors[vIndex++] = new Vector3(x, y, z);
 
-				vectors[vIndex++] = new Vector3(radius*Mathf.Sin(phi)*Mathf.Cos(theta),
-												radius*Mathf.Sin(phi)*Mathf.Sin(theta),
-												radius*Mathf.Cos(phi));				
+                    //getting closer
+                    /*
+                    x = Mathf.Cos(theta) * (r1 + r2 * Mathf.Cos(phi));
+                    y = Mathf.Sin(theta) * (r1 + r2 * Mathf.Cos(phi));
+                    z = r * r2 * Mathf.Sin(phi);
+                    */
+                    // x = (R + r * cos(theta)) * cos phi
+                    // y = (R + r * Cos(theta)) * sin(phi)
+                    // z = r * sin(theta)
+                    float x = (r1 * radius + r2 *  Mathf.Cos(theta)) * Mathf.Cos(phi);
+                    float y = (r1 * radius  + r2 * Mathf.Cos(theta)) * Mathf.Sin(phi);
+                    float z =  r2 * Mathf.Sin(theta);
+                  //  float x = Mathf.Cos(phi) * (r1 * Mathf.Cos(phi) + r2 * Mathf.Cos(theta));
+                 //   float y = Mathf.Sin(phi) * (r1 * Mathf.Cos(phi) + r2 * Mathf.Cos(theta));
+                 //   float z = r1 * r2 * Mathf.Sin(theta);
+                    vectors[vIndex++] = new Vector3(x, y, z);
+                }
+                else
+                {
+                    /*
+                    vectors[vIndex++] = new Vector3(radius * Mathf.Sin(phi) * Mathf.Cos(theta),
+                                                    radius * Mathf.Sin(phi) * Mathf.Sin(theta),
+                                                    radius * Mathf.Cos(phi));
+                                                    */
+
+                  //  float phi = Mathf.Atan2(y, x);
+                  //  // float theta = r == 0.0 ? 0.0 : asin(v.vertex.z / r);
+                  //  float theta = r == 0.0f ? 0.0f : Mathf.Asin(z / r);
+                  //  float radius = GetRadius(phi, theta, Time.timeSinceLevelLoad);
+
+                    float superRadiusPhi = radiusForAngle(phi, a1, b1, m1, n11, n12, n13);
+                    float superRadiusTheta = radiusForAngle(theta, a2, b2, m2, n21, n22, n23);
+
+                    x = radius * superRadiusPhi * Mathf.Cos(phi) * superRadiusTheta * Mathf.Cos(theta);
+                    y = radius * superRadiusPhi * Mathf.Sin(phi) * superRadiusTheta * Mathf.Cos(theta);
+                    z = radius * superRadiusPhi * Mathf.Sin(theta);
+                    vectors[vIndex++] = new Vector3(x, y, z);
+                }
 			}
 		}
 		m.vertices = vectors;
@@ -126,12 +193,18 @@ public class SuperSpherical : MonoBehaviour
 		m.RecalculateNormals();
 		return m;
 	}
-
-	//get radius applies waves along phi and theta based on the public variables
-	//optimization note:
-	// this would not be impossible to code as a shader... however, getting multiple 
-	// waves affecting the surface at once might take some careful thinking...
-	float GetRadius(float phi, float theta, float time = 0)
+    float radiusForAngle(float angle, float a, float b, float m, float n1, float n2, float n3)
+    {
+        float tempA = Mathf.Abs(Mathf.Cos(angle * m * 0.25f) / a);
+        float tempB = Mathf.Abs(Mathf.Sin(angle * m * 0.25f) / b);
+        float tempAB = Mathf.Pow(tempA, n2) + Mathf.Pow(tempB, n3);
+        return Mathf.Abs(Mathf.Pow(tempAB, -1.0f / n1));
+    }
+    //get radius applies waves along phi and theta based on the public variables
+    //optimization note:
+    // this would not be impossible to code as a shader... however, getting multiple 
+    // waves affecting the surface at once might take some careful thinking...
+    float GetRadius(float phi, float theta, float time = 0)
 	{  
 		return xMod1YOffset + xMod1Scale*Mathf.Sin(xMod1TimeResponse*time + theta*xMod1Period*time*.1f + xMod1PhaseOffset*time) +
 			yMod1YOffset + yMod1Scale*Mathf.Sin(yMod1TimeResponse*time + phi*yMod1Period*time*.1f + yMod1PhaseOffset*time);

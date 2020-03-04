@@ -1,6 +1,6 @@
 %YAML 1.1
 %TAG !u! tag:unity3d.com,2011:
---- !u!1 &117786
+--- !u!1 &8900373565543839640
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -8,71 +8,102 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 417786}
-  - component: {fileID: 3317786}
-  - component: {fileID: 13517786}
-  - component: {fileID: 2317786}
+  - component: {fileID: 8900373565543839644}
+  - component: {fileID: 8900373565543839647}
+  - component: {fileID: 8900373565543839646}
+  - component: {fileID: 8900373565543839641}
   m_Layer: 0
-  m_Name: GreenBall
-  m_TagString: Collision
+  m_Name: Supertorus
+  m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!4 &417786
+--- !u!4 &8900373565543839644
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 117786}
+  m_GameObject: {fileID: 8900373565543839640}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 5}
-  m_LocalScale: {x: 0.05, y: 0.05, z: 0.05}
+  m_LocalPosition: {x: -0.009682164, y: 0.07027381, z: 1}
+  m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!33 &3317786
+--- !u!114 &8900373565543839647
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 8900373565543839640}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3d416755fd4572f478fd6d7c706d0084, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  torus: 1
+  phiDivs: 250
+  thetaDivs: 250
+  r1: 1
+  r2: 3.7
+  xMod1Period: 1
+  xMod1PhaseOffset: 1
+  xMod1Scale: 1
+  xMod1YOffset: 1
+  xMod1TimeResponse: 1
+  yMod1Period: 1
+  yMod1PhaseOffset: 1
+  yMod1Scale: 1.91
+  yMod1YOffset: 3.95
+  yMod1TimeResponse: 0.34
+  offset: 0.57
+  m1: -1.06
+  m1change: 0
+  n11: 0
+  n12: 0
+  n13: 0
+  a1: 1
+  b1: 1
+  m2: 0
+  m2change: 0
+  n21: 0
+  n22: 0
+  n23: 0
+  a2: 1
+  b2: 1
+  r: 200
+  a: 0
+  b: 0
+--- !u!33 &8900373565543839646
 MeshFilter:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 117786}
-  m_Mesh: {fileID: 10207, guid: 0000000000000000e000000000000000, type: 0}
---- !u!135 &13517786
-SphereCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 117786}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Radius: 0.5
-  m_Center: {x: 0, y: 0, z: 0}
---- !u!23 &2317786
+  m_GameObject: {fileID: 8900373565543839640}
+  m_Mesh: {fileID: 0}
+--- !u!23 &8900373565543839641
 MeshRenderer:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 117786}
+  m_GameObject: {fileID: 8900373565543839640}
   m_Enabled: 1
   m_CastShadows: 1
   m_ReceiveShadows: 1
   m_DynamicOccludee: 1
   m_MotionVectors: 1
-  m_LightProbeUsage: 0
+  m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
-  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: c8dce917b3f0e7f4397dd5d7e6fe2125, type: 2}
+  - {fileID: 2100000, guid: 3c942d2761388415895e7420d1226bc1, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
