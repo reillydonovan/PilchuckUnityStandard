@@ -171,14 +171,14 @@ public class DisplacementControl : MonoBehaviour
         hueAmount += 1f;
 
         tileAmount += .5f;
-        audioAmount += 1f;
+        audioAmount += .1f;
         modulationDisplacmentAmount += .05f;
         radiusDisplacementAmount += 1.0f / timeDivision;
-        frequencyDisplacementAmount += .1f;
+       // frequencyDisplacementAmount += .1f;
         stripWidthDisplacementAmount += 0.5f / timeDivision;
         rotateDisplacementAmount += 0.1f;
-        frequencyModulationAmount += 0.1f;
-        frequencyModulationIntentsity += 0.2f;
+        frequencyModulationAmount += 0.01f;
+        frequencyModulationIntentsity += 0.02f;
 
         sineWaveAmount += .01f;
         squareWaveAmount += .007f;
