@@ -164,13 +164,13 @@ public class DisplacementControl : MonoBehaviour
     public void CollisionEvents()
     {
         //   Debug.Log("we hit an obstacle");
-        displacementAmount += .005f;
+        displacementAmount += .001f;
         blendAmount += .1f;
-        shineAmount += .05f;
-        bloomAmount += .1f;
-        hueAmount += 1f;
+        shineAmount += .01f;
+        bloomAmount += .01f;
+        hueAmount += .1f;
 
-        tileAmount += .5f;
+        tileAmount += .1f;
         audioAmount += .1f;
         modulationDisplacmentAmount += .05f;
         radiusDisplacementAmount += 1.0f / timeDivision;
