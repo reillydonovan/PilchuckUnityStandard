@@ -1027,6 +1027,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81820328048ea104fb530d19d4d299d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  postProcessVolumeGO: {fileID: 1023577383}
   auraScale: {x: 0, y: 0, z: 0}
   speed: 1
   startColor: {r: 0, g: 0, b: 0, a: 0}
@@ -1034,15 +1035,24 @@ MonoBehaviour:
   audioSource: {fileID: 1106440385}
   displacementAmount: 0
   shineAmount: 0
-  glowAmount: 0
-  audioAmount: 0
-  audioLerpUp: 0
+  bloomAmount: 0
+  tileAmount: 0
   hueAmount: 0
+  blendAmount: 0
+  blendDisplacementAmount: 0
   stripWidthDisplacementAmount: 0
   radiusDisplacementAmount: 0
   modulationDisplacmentAmount: 0
-  timeDivision: 1
+  timeDivision: 2
   frequencyDisplacementAmount: 0
+  superShape: {fileID: 0}
+  audioAmount: 0
+  audioLerpUp: 0
+  sineWaveAmount: 0
+  squareWaveAmount: 0
+  sawWaveAmount: 0
+  frequencyModulationAmount: 0
+  frequencyModulationIntentsity: 0
   explosionParticles: {fileID: 0}
 --- !u!114 &721901552
 MonoBehaviour:
@@ -1117,7 +1127,8 @@ GameObject:
   - component: {fileID: 999714150}
   - component: {fileID: 999714148}
   - component: {fileID: 999714147}
-  m_Layer: 0
+  - component: {fileID: 999714149}
+  m_Layer: 9
   m_Name: Main Camera
   m_TagString: MainCamera
   m_Icon: {fileID: 0}
@@ -1140,6 +1151,66 @@ Behaviour:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 999714146}
   m_Enabled: 1
+--- !u!114 &999714149
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 999714146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeTrigger: {fileID: 999714151}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 512
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 0
+  antialiasingMode: 0
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 0
+  m_ShowCustomSorter: 0
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
 --- !u!20 &999714150
 Camera:
   m_ObjectHideFlags: 0
@@ -1196,6 +1267,54 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 4
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &1023577383
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1023577385}
+  - component: {fileID: 1023577384}
+  m_Layer: 9
+  m_Name: PostProcessVolume
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &1023577384
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023577383}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8b9a305e18de0c04dbd257a21cd47087, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  sharedProfile: {fileID: 11400000, guid: ae71d8839d9e6234e968939a3ccf875e, type: 2}
+  isGlobal: 1
+  blendDistance: 0
+  weight: 1
+  priority: 0
+--- !u!4 &1023577385
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1023577383}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_RootOrder: 19
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &1106440385
 GameObject:
@@ -1751,7 +1870,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1389477902}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: RotateKinect
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

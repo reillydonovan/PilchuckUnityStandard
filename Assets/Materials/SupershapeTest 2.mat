@@ -144,7 +144,7 @@ Material:
     - _WaveSpeed: 0
     - _WaveValue1: 0
     - _WaveValue2: 20
-    - _WaveValue3: 20
+    - _WaveValue3: 30
     - _ZWrite: 1
     - xMod1Period: 10
     - xMod1PhaseOffset: 1
