@@ -113,7 +113,7 @@ public class DisplacementControl : MonoBehaviour
         audioController.mainFrequency = audioAmount;
         audioController.frequencyModulationOscillatorFrequency = frequencyModulationAmount;
         audioController.frequencyModulationOscillatorIntensity = frequencyModulationIntentsity;
-        audioController.mainFrequency = Mathf.Abs(this.GetComponent<Renderer>().material.GetFloat("_Shape2N1")) + 50;
+        //audioController.mainFrequency = Mathf.Abs(this.GetComponent<Renderer>().material.GetFloat("_Shape2N1")) + 50;
 
         //Shader Effects
         if(isBlend)this.GetComponent<MeshRenderer>().material.SetFloat("_Blend", blendAmount);
