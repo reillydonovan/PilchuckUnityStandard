@@ -171,18 +171,18 @@ public class DisplacementControl : MonoBehaviour
         hueAmount += 1f;
 
         tileAmount += .5f;
-        audioAmount += 10f;
+        audioAmount += 1f;
         modulationDisplacmentAmount += .05f;
         radiusDisplacementAmount += 1.0f / timeDivision;
         frequencyDisplacementAmount += .1f;
         stripWidthDisplacementAmount += 0.5f / timeDivision;
         rotateDisplacementAmount += 0.1f;
-        frequencyModulationAmount += 0.3f;
-        frequencyModulationIntentsity += 0.5f;
+        frequencyModulationAmount += 0.1f;
+        frequencyModulationIntentsity += 0.2f;
 
         sineWaveAmount += .01f;
-        squareWaveAmount += .02f;
-        sawWaveAmount += .01f;
+        squareWaveAmount += .007f;
+        sawWaveAmount += .005f;
         //  transformDisplacementAmount += .001f / timeDivision;
         //  explosionParticles.Play();
     }
