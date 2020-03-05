@@ -33,6 +33,12 @@ Shader "Smkgames/Surface/Iridescence/Bubble" {
     _RimPower("RimPower", Range(0, 5)) = 0
 
 
+		[Space(20)][Header(Vertex Animation)][Space(20)]
+		 _VertexAnimOffset("VertexAnimOffset", Range(-100,100)) = 1.0
+		 _WaveValue1("WaveValue1", Range(-100,100)) = 1.0
+		 _WaveValue2("WaveValue2", Range(-100,100)) = 1.0
+		 _WaveValue3("WaveValue3", Range(-100,100)) = 1.0
+
     [Space(20)][Header(Vertex Animation)][Space(20)]
 
 
@@ -95,6 +101,12 @@ Shader "Smkgames/Surface/Iridescence/Bubble" {
 		float _Distortion;
     float _RimPower;
 
+	float _VertexAnimOffset;
+	float totalOffset;
+	float _WaveValue1;
+	float _WaveValue2;
+	float _WaveValue3;
+
     fixed _Hue, _Saturation, _Brightness, _Contrast;
 
 
@@ -130,13 +142,35 @@ Shader "Smkgames/Surface/Iridescence/Bubble" {
 
             void vert(inout appdata_full v,out Input o){
             UNITY_INITIALIZE_OUTPUT(Input,o)
+
+				// float time = _Time * _WaveSpeed;
+				// float waveValueA = sin(time + v.vertex.x * _WaveFrequency) * _Amplitude;
+				// v.vertex.xyz = float3(v.vertex.x, v.vertex.y + waveValueA, v.vertex.z);
+
+				totalOffset = _Time + _VertexAnimOffset;
+
+
+
+			v.vertex.xyz += sin((v.vertex.xyz + totalOffset * _WaveValue3) * _WaveValue2) * _WaveValue1;
+
+
+			// Y Axis Sin Wave Deformation
+		  //  v.vertex.y += sin((v.vertex.y + totalOffset * _WaveValueY3) * _WaveValueY2) * _WaveValueY1;
+
+
+			// Z Axis Sin Wave Deformation
+		   // v.vertex.z += sin((v.vertex.z + totalOffset * _WaveValueZ3) * _WaveValueZ2) * _WaveValueZ1;
+
             float4 tex = tex2Dlod(_WindMap, float4(v.texcoord.xy + (_Time.x * _Speed), 0, 0));
             v.vertex.xyz += tex.y *  _Direction.xyz * _Speed;
             float4 hpos = UnityObjectToClipPos (v.vertex);
             o.grabUV = ComputeGrabScreenPos(hpos);
             }
 
-    
+			
+			
+			
+
 
 
       void surf (Input IN, inout SurfaceOutputStandard o) {
