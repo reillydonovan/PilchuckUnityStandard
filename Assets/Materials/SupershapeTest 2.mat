@@ -146,16 +146,16 @@ Material:
     - _WaveValue2: 20
     - _WaveValue3: 30
     - _ZWrite: 1
-    - xMod1Period: 10
-    - xMod1PhaseOffset: 1
-    - xMod1Scale: 0.3
-    - xMod1TimeResponse: 5
-    - xMod1YOffset: 0.3
+    - xMod1Period: 0
+    - xMod1PhaseOffset: 0
+    - xMod1Scale: 0.1
+    - xMod1TimeResponse: 0.1
+    - xMod1YOffset: 0.1
     - yMod1Period: 0
     - yMod1PhaseOffset: 0
-    - yMod1Scale: 0.3
-    - yMod1TimeResponse: 0
-    - yMod1YOffset: 0
+    - yMod1Scale: 0.1
+    - yMod1TimeResponse: 0.1
+    - yMod1YOffset: 0.1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
     - _ColorA: {r: 1, g: 0, b: 0.04301071, a: 1}
