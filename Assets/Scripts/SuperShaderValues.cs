@@ -37,10 +37,10 @@ public class SuperShaderValues : MonoBehaviour
     }
 
     [Range(0.016f,30f)]
-    public float timeFade = 10f;
+    private float timeFade = 4.5f;
 
     [Range(0, 120f)] 
-    public float pauseTime = 10f;
+    private float pauseTime = 10f;
     
     private List<ShaderValue> shaderValues;
     private MeshRenderer _meshRenderer;
@@ -69,7 +69,7 @@ public class SuperShaderValues : MonoBehaviour
                 {
                     shaderIndex = 0;
                 }
-                targetValue = shaderValues.ToArray()[shaderIndex];
+                targetValue = shaderValues[shaderIndex];
             }
         }
     }
@@ -122,22 +122,64 @@ public class SuperShaderValues : MonoBehaviour
         shaderValues.Add(a38); shaderValues.Add(a39); shaderValues.Add(a41);
         shaderValues.Add(a42); shaderValues.Add(a43); shaderValues.Add(a44);
         shaderValues.Add(a45);
+        
+        // Get the real time and relate it to an origin date of June 1, 2019 UTC
+        DateTime currentDT = DateTime.Now;
+        DateTime jun1DT = new DateTime(2019,06,01);
+        double diffSecs = (currentDT - jun1DT).TotalSeconds;
+        double divisor = (double) pauseTime + (double) timeFade;
+        double timeRemain = diffSecs / divisor;
+        double timestate = Math.Floor(timeRemain); // full phases
+        timeRemain -= timestate;
+        startTime = Time.time - (float) timeRemain;
+        
+        // Which phase is the current phase
+        shaderIndex = (int) timestate % shaderValues.Count;
+        Debug.Log("shaderIndex: " + shaderIndex);
+
+        currentValue = shaderValues[shaderIndex];
+        targetValue = currentValue;
+        if (shaderIndex < shaderValues.Count - 1)
+        {
+            targetValue = shaderValues[shaderIndex + 1];
+        }
+        else
+        {
+            targetValue = shaderValues[0];
+        }
+        
+        // Are we in shouldAnimate time or pauseTime?
+        // Start with pause time, then go into animation time.
+        float deltaTime = Time.time - startTime;
+        if (deltaTime > pauseTime)
+        {
+            startTime -= deltaTime;
+            _shouldAnimate = true;
+            if (shaderIndex < shaderValues.Count - 1)
+            {
+                shaderIndex += 1;
+            }
+            else
+            {
+                shaderIndex = 0;
+            }
+            targetValue = shaderValues[shaderIndex];
+        }
+
         _meshRenderer = GetComponent<MeshRenderer>();
-        _meshRenderer.material.SetFloat("_Shape1A", a2.shape1A);
-        _meshRenderer.material.SetFloat("_Shape1B", a2.shape1b);
-        _meshRenderer.material.SetFloat("_Shape1M", a2.shape1m);
-        _meshRenderer.material.SetFloat("_Shape1N1", a2.shape1n1);
-        _meshRenderer.material.SetFloat("_Shape1N2", a2.shape1n2);
-        _meshRenderer.material.SetFloat("_Shape1N3", a2.shape1n3);
-        _meshRenderer.material.SetFloat("_Shape2A", a2.shape2a);
-        _meshRenderer.material.SetFloat("_Shape2B", a2.shape2b);
-        _meshRenderer.material.SetFloat("_Shape2M", a2.shape2m);
-        _meshRenderer.material.SetFloat("_Shape2N1", a2.shape2n1);
-        _meshRenderer.material.SetFloat("_Shape2N2", a2.shape2n2);
-        _meshRenderer.material.SetFloat("_Shape2N3", a2.shape2n3);
-        currentValue = a2;
-        targetValue = a2;
-        startTime = Time.time;
+        _meshRenderer.material.SetFloat("_Shape1A", currentValue.shape1A);
+        _meshRenderer.material.SetFloat("_Shape1B", currentValue.shape1b);
+        _meshRenderer.material.SetFloat("_Shape1M", currentValue.shape1m);
+        _meshRenderer.material.SetFloat("_Shape1N1", currentValue.shape1n1);
+        _meshRenderer.material.SetFloat("_Shape1N2", currentValue.shape1n2);
+        _meshRenderer.material.SetFloat("_Shape1N3", currentValue.shape1n3);
+        _meshRenderer.material.SetFloat("_Shape2A", currentValue.shape2a);
+        _meshRenderer.material.SetFloat("_Shape2B", currentValue.shape2b);
+        _meshRenderer.material.SetFloat("_Shape2M", currentValue.shape2m);
+        _meshRenderer.material.SetFloat("_Shape2N1", currentValue.shape2n1);
+        _meshRenderer.material.SetFloat("_Shape2N2", currentValue.shape2n2);
+        _meshRenderer.material.SetFloat("_Shape2N3", currentValue.shape2n3);
+        
     }
 
     // Update is called once per frame
