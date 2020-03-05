@@ -10498,14 +10498,14 @@ MonoBehaviour:
   useSinusAudioWave: 1
   sinusAudioWaveIntensity: 1
   useSquareAudioWave: 1
-  squareAudioWaveIntensity: 0
+  squareAudioWaveIntensity: 0.5
   useSawAudioWave: 1
-  sawAudioWaveIntensity: 0
+  sawAudioWaveIntensity: 0.25
   useAmplitudeModulation: 1
   amplitudeModulationOscillatorFrequency: 0.2
   useFrequencyModulation: 1
-  frequencyModulationOscillatorFrequency: 0.2
-  frequencyModulationOscillatorIntensity: 1
+  frequencyModulationOscillatorFrequency: 0.4
+  frequencyModulationOscillatorIntensity: 32.8
   amplitudeModulationRangeOut: 0
   frequencyModulationRangeOut: 0
 --- !u!82 &1569800018
