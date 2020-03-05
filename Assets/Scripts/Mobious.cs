@@ -2,6 +2,8 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Rendering.PostProcessing;
+
 
 [RequireComponent(typeof(MeshFilter), typeof(MeshRenderer))]
 public class Mobious : MonoBehaviour
@@ -21,7 +23,7 @@ public class Mobious : MonoBehaviour
     //  public GameObject aura;
     public float displacementAmount;
     public float shineAmount;
-    public float glowAmount;
+    public float bloomAmount;
     public float audioAmount;
     public float audioLerpUp;
     public float hueAmount;
@@ -31,7 +33,13 @@ public class Mobious : MonoBehaviour
     public float timeDivision = 1;
     public float frequencyDisplacementAmount;
     private float rotateDisplacementAmount;
-   // private float transformDisplacementAmount;
+
+    [Header("Post Processing Effects")]
+    Bloom bloomLayer;
+    private ProceduralAudioController audioController;
+    public GameObject postProcessVolumeGO;
+    PostProcessVolume postVolume;
+    // private float transformDisplacementAmount;
 
     //public GameObject leftHandMesh, rightHandMesh;
     //private float leftHandMeshDisplacement, rightHandMeshDisplacement;
@@ -42,6 +50,7 @@ public class Mobious : MonoBehaviour
     public Color startColor;
     public Color endColor;
     float startTime;
+    
     // public float m1Start;
     // public float m1End;
     // public float m1ChangeAmount;
@@ -60,6 +69,8 @@ public class Mobious : MonoBehaviour
         meshRender = GetComponent<MeshRenderer>();
        // meshCollide = GetComponent<MeshCollider>();
         startTime = Time.time;
+        postVolume = postProcessVolumeGO.GetComponent<PostProcessVolume>();
+        postVolume.profile.TryGetSettings(out bloomLayer);
     }
 
     // Update is called once per frame
@@ -146,7 +157,8 @@ Mathf.Sin(tm + curRingRad * frequency));
         // auraScale = Mathf.Lerp(auraScale, 0, Time.deltaTime);
         displacementAmount = Mathf.Lerp(displacementAmount, 0, Time.deltaTime / timeDivision);
         shineAmount = Mathf.Lerp(shineAmount, 0, Time.deltaTime);
-        glowAmount = Mathf.Lerp(glowAmount, 0, Time.deltaTime);
+        bloomAmount = Mathf.Lerp(bloomAmount, 0.5f, Time.deltaTime);
+        bloomLayer.intensity.value = bloomAmount;
         hueAmount = Mathf.Lerp(hueAmount, 0, Time.deltaTime);
         audioAmount = Mathf.Lerp(audioAmount, 0.15f, Time.deltaTime / timeDivision);
         audioLerpUp = Mathf.Lerp(0, audioLerpUp, Time.deltaTime);
@@ -185,7 +197,7 @@ Mathf.Sin(tm + curRingRad * frequency));
             // m1ChangeAmount += .1f;
             displacementAmount += .1f;
             shineAmount += .5f;
-            glowAmount += 1f;
+            bloomAmount += 1f;
             hueAmount += .3f;
             audioAmount += 10f;
             audioLerpUp += 10f;
@@ -205,7 +217,7 @@ Mathf.Sin(tm + curRingRad * frequency));
             //   Debug.Log("we hit an obstacle");
             displacementAmount += .1f;
             shineAmount += .5f;
-            glowAmount += 1f;
+            bloomAmount += 1f;
             audioAmount += .5f;
             modulationDisplacmentAmount += .05f;
             radiusDisplacementAmount += 1.0f / timeDivision;

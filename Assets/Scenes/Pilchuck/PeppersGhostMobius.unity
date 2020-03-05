@@ -2052,7 +2052,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   sharedProfile: {fileID: 11400000, guid: ae71d8839d9e6234e968939a3ccf875e, type: 2}
-  isGlobal: 0
+  isGlobal: 1
   blendDistance: 0
   weight: 1
   priority: 0
@@ -2807,6 +2807,11 @@ PrefabInstance:
       propertyPath: timeDivision
       value: 5
       objectReference: {fileID: 0}
+    - target: {fileID: 2724624175765142671, guid: e74178f230a66e94cbec0ecc03886bad,
+        type: 3}
+      propertyPath: postProcessVolumeGO
+      value: 
+      objectReference: {fileID: 399836694}
     - target: {fileID: 2724624176864549392, guid: e74178f230a66e94cbec0ecc03886bad,
         type: 3}
       propertyPath: m_audioClip
