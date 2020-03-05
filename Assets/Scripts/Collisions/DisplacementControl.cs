@@ -165,7 +165,7 @@ public class DisplacementControl : MonoBehaviour
     {
         //   Debug.Log("we hit an obstacle");
         displacementAmount += .001f;
-        blendAmount += .1f;
+        blendAmount += .002f;
         shineAmount += .01f;
         bloomAmount += .01f;
         hueAmount += .1f;
@@ -180,9 +180,9 @@ public class DisplacementControl : MonoBehaviour
         frequencyModulationAmount += 0.01f;
         frequencyModulationIntentsity += 0.02f;
 
-        sineWaveAmount += .01f;
-        squareWaveAmount += .007f;
-        sawWaveAmount += .005f;
+        //sineWaveAmount += .01f;
+        //squareWaveAmount += .007f;
+        //sawWaveAmount += .005f;
         //  transformDisplacementAmount += .001f / timeDivision;
         //  explosionParticles.Play();
     }

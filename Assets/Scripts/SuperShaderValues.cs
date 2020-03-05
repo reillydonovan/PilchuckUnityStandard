@@ -125,7 +125,7 @@ public class SuperShaderValues : MonoBehaviour
         
         // Get the real time and relate it to an origin date of June 1, 2019 UTC
         DateTime currentDT = DateTime.Now;
-        DateTime jun1DT = new DateTime(2019,06,01);
+        DateTime jun1DT = new DateTime(2020,03,05);
         double diffSecs = (currentDT - jun1DT).TotalSeconds;
         double divisor = (double) pauseTime + (double) timeFade;
         double timeRemain = diffSecs / divisor;
