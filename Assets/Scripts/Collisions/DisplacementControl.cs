@@ -164,7 +164,7 @@ public class DisplacementControl : MonoBehaviour
     public void CollisionEvents()
     {
         //   Debug.Log("we hit an obstacle");
-        displacementAmount += .03f;
+        displacementAmount += .005f;
         blendAmount += .1f;
         shineAmount += .05f;
         bloomAmount += .1f;
