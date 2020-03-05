@@ -57,7 +57,7 @@ public class ProceduralAudioController : MonoBehaviour {
 	public bool useFrequencyModulation;
 	[Range(0.0f,30.0f)]
 	public float frequencyModulationOscillatorFrequency = 1.0f;
-	[Range(1.0f,100.0f)]
+	[Range(0.0f,100.0f)]
 	public float frequencyModulationOscillatorIntensity = 10.0f;
 
 	[Header("Out Values")]
