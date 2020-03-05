@@ -30,6 +30,8 @@ public class DisplacementControl : MonoBehaviour
     public float audioAmount;
     public float audioLerpUp;
     public float hueAmount;
+    public float blendAmount;
+    public float blendDisplacementAmount;
     public float stripWidthDisplacementAmount;
     public float radiusDisplacementAmount;
     public float modulationDisplacmentAmount;
@@ -67,6 +69,7 @@ public class DisplacementControl : MonoBehaviour
         //   meshRender.material.SetFloat("_Shape1M", m1ChangeAmount);
         // auraScale = Mathf.Lerp(auraScale, 0, Time.deltaTime);
         displacementAmount = Mathf.Lerp(displacementAmount, 0, Time.deltaTime / timeDivision);
+        blendAmount = Mathf.Lerp(blendAmount, 0.1f, Time.deltaTime / timeDivision * 5);
         shineAmount = Mathf.Lerp(shineAmount, 0, Time.deltaTime);
         glowAmount = Mathf.Lerp(glowAmount, 0, Time.deltaTime);
         hueAmount = Mathf.Lerp(hueAmount, 0, Time.deltaTime);
@@ -89,6 +92,7 @@ public class DisplacementControl : MonoBehaviour
         rotateDisplacementAmount = Mathf.Lerp(rotateDisplacementAmount, .1f, Time.deltaTime / timeDivision);
         // transformDisplacementAmount = Mathf.Lerp(transformDisplacementAmount, 0, Time.deltaTime / timeDivision);
 
+        this.GetComponent<MeshRenderer>().material.SetFloat("_Blend", blendAmount);
         rotateX = rotateDisplacementAmount;
         rotateY = rotateDisplacementAmount;
         rotateZ = rotateDisplacementAmount;
@@ -102,6 +106,7 @@ public class DisplacementControl : MonoBehaviour
             Debug.Log("Pressed A");
             // m1ChangeAmount += .1f;
             displacementAmount += .1f;
+            blendAmount += .1f;
             shineAmount += .5f;
             glowAmount += 1f;
             hueAmount += .3f;
@@ -122,6 +127,7 @@ public class DisplacementControl : MonoBehaviour
         {
             //   Debug.Log("we hit an obstacle");
             displacementAmount += .1f;
+            blendAmount += .1f;
             shineAmount += .5f;
             glowAmount += 1f;
             audioAmount += .5f;
