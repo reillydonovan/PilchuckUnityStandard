@@ -148,7 +148,7 @@ Mathf.Sin(tm + curRingRad * frequency));
         shineAmount = Mathf.Lerp(shineAmount, 0, Time.deltaTime);
         glowAmount = Mathf.Lerp(glowAmount, 0, Time.deltaTime);
         hueAmount = Mathf.Lerp(hueAmount, 0, Time.deltaTime);
-        audioAmount = Mathf.Lerp(audioAmount, 0, Time.deltaTime / timeDivision);
+        audioAmount = Mathf.Lerp(audioAmount, 0.15f, Time.deltaTime / timeDivision);
         audioLerpUp = Mathf.Lerp(0, audioLerpUp, Time.deltaTime);
         // superShape.GetComponent<MeshRenderer>().material.SetFloat("_WaveValue1", displacementAmount);
         //rightHandMesh.GetComponent<SkinnedMeshRenderer>().material.SetFloat("_WaveValue1", displacementAmount);
@@ -158,7 +158,7 @@ Mathf.Sin(tm + curRingRad * frequency));
         //  mainCam.GetComponent<MKGlow>().bloomIntensity = glowAmount;
         //  audioSource.GetComponent<AudioSource>().pitch = audioAmount;
         audioSource.GetComponent<ProceduralAudioController>().amplitudeModulationOscillatorFrequency = audioAmount;
-        audioSource.GetComponent<ProceduralAudioController>().mainFrequency = audioAmount + 100.0f;
+        audioSource.GetComponent<ProceduralAudioController>().mainFrequency = audioAmount + 20.0f;
 
         stripWidthDisplacementAmount = Mathf.Lerp(stripWidthDisplacementAmount, 1, Time.deltaTime /timeDivision);
         radiusDisplacementAmount = Mathf.Lerp(radiusDisplacementAmount, 10, Time.deltaTime / timeDivision);

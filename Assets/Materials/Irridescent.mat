@@ -111,6 +111,10 @@ Material:
     - _SrcBlend: 1
     - _TextureAlpha: 0.5
     - _UVSec: 0
+    - _VertexAnimOffset: 0
+    - _WaveValue1: 0
+    - _WaveValue2: 0
+    - _WaveValue3: 0
     - _ZWrite: 1
     m_Colors:
     - _Color: {r: 1, g: 1, b: 1, a: 1}
