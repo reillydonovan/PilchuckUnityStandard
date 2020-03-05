@@ -1027,6 +1027,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 81820328048ea104fb530d19d4d299d0, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  isBlend: 1
+  isBloom: 1
   postProcessVolumeGO: {fileID: 1023577383}
   auraScale: {x: 0, y: 0, z: 0}
   speed: 1

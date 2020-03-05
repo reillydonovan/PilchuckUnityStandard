@@ -10,7 +10,7 @@ public class SuperSpherical : MonoBehaviour
 	// number of verts along the 'latitude'
 	public int thetaDivs = 10;
 
-    public float r1, r2;
+    public float r1, r1min, r1max, r2, r2min, r2max;
 	//there are two waves that can be applied to and modify the surface of the spere
 	//there is no reason that these have to be the only two waves, but I cannot decide 
 	//on a approach to easily make ANY number of them in the editor...
@@ -71,6 +71,8 @@ public class SuperSpherical : MonoBehaviour
 	void Update () 
 	{
 		this.UpdateMesh( GetComponent<MeshFilter>().mesh );
+      //  r1 = Mathf.Lerp(r1min, r1max, Mathf.PingPong(Time.time / 5, 1));
+      //  r2 = Mathf.Lerp(r2min, r2max, Mathf.PingPong(Time.time / 5, 1));
 	}
 
 	// create or update a mesh object to have a sphere with hamonic waves all over

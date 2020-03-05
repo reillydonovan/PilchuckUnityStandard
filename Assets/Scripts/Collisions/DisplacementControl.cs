@@ -13,7 +13,7 @@ public class DisplacementControl : MonoBehaviour
     //Post Processing properties
 
     Bloom bloomLayer;
-
+    public bool isBlend, isBloom;
     private ProceduralAudioController audioController;
     public GameObject postProcessVolumeGO;
     PostProcessVolume postVolume; 
@@ -89,7 +89,8 @@ public class DisplacementControl : MonoBehaviour
         displacementAmount = Mathf.Lerp(displacementAmount, 0, Time.deltaTime / timeDivision);
         blendAmount = Mathf.Lerp(blendAmount, 0.1f, Time.deltaTime / timeDivision);
         shineAmount = Mathf.Lerp(shineAmount, 0, Time.deltaTime);
-        bloomAmount = Mathf.Lerp(bloomAmount, 0.5f, Time.deltaTime);
+        if (isBloom) bloomAmount = Mathf.Lerp(bloomAmount, 0.5f, Time.deltaTime);
+        else bloomAmount = Mathf.Lerp(bloomAmount, 0.0f, Time.deltaTime);
         hueAmount = Mathf.Lerp(hueAmount, 0, Time.deltaTime);
         bloomLayer.intensity.value = bloomAmount;
 
@@ -115,7 +116,7 @@ public class DisplacementControl : MonoBehaviour
         //audioController.mainFrequency = this.GetComponent<Renderer>().material.GetFloat("_Shape2N1") + 100;
 
         //Shader Effects
-        this.GetComponent<MeshRenderer>().material.SetFloat("_Blend", blendAmount);
+        if(isBlend)this.GetComponent<MeshRenderer>().material.SetFloat("_Blend", blendAmount);
         this.GetComponent<MeshRenderer>().material.SetFloat("_WaveValue1", displacementAmount);
         this.GetComponent<MeshRenderer>().material.mainTextureScale = new Vector2(tileAmount, tileAmount);
         meshRender.material.SetFloat("_Emission", shineAmount);
@@ -167,6 +168,8 @@ public class DisplacementControl : MonoBehaviour
         blendAmount += .1f;
         shineAmount += .5f;
         bloomAmount += 1f;
+        hueAmount += 1f;
+
         tileAmount += .5f;
         audioAmount += 10f;
         modulationDisplacmentAmount += .05f;
