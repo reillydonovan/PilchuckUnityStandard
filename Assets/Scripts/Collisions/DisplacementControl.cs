@@ -89,7 +89,7 @@ public class DisplacementControl : MonoBehaviour
         displacementAmount = Mathf.Lerp(displacementAmount, 0, Time.deltaTime / timeDivision);
         blendAmount = Mathf.Lerp(blendAmount, 0.1f, Time.deltaTime / timeDivision);
         shineAmount = Mathf.Lerp(shineAmount, 0, Time.deltaTime);
-        if (isBloom) bloomAmount = Mathf.Lerp(bloomAmount, 0.5f, Time.deltaTime);
+        if (isBloom) bloomAmount = Mathf.Lerp(bloomAmount, 0.2f, Time.deltaTime);
         else bloomAmount = Mathf.Lerp(bloomAmount, 0.0f, Time.deltaTime);
         hueAmount = Mathf.Lerp(hueAmount, 0, Time.deltaTime);
         bloomLayer.intensity.value = bloomAmount;
@@ -164,10 +164,10 @@ public class DisplacementControl : MonoBehaviour
     public void CollisionEvents()
     {
         //   Debug.Log("we hit an obstacle");
-        displacementAmount += .1f;
+        displacementAmount += .03f;
         blendAmount += .1f;
-        shineAmount += .5f;
-        bloomAmount += 1f;
+        shineAmount += .05f;
+        bloomAmount += .1f;
         hueAmount += 1f;
 
         tileAmount += .5f;
@@ -180,9 +180,9 @@ public class DisplacementControl : MonoBehaviour
         frequencyModulationAmount += 0.3f;
         frequencyModulationIntentsity += 0.5f;
 
-        sineWaveAmount += .1f;
-        squareWaveAmount += .2f;
-        sawWaveAmount += .1f;
+        sineWaveAmount += .01f;
+        squareWaveAmount += .02f;
+        sawWaveAmount += .01f;
         //  transformDisplacementAmount += .001f / timeDivision;
         //  explosionParticles.Play();
     }
