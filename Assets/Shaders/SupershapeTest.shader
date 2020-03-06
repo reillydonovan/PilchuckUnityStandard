@@ -239,9 +239,9 @@
 			 float superRadiusPhi = radiusForAngle(phi, _Shape1A, _Shape1B, _Shape1M, _Shape1N1, _Shape1N2, _Shape1N3);
 			 float superRadiusTheta = radiusForAngle(theta, _Shape2A, _Shape2B, _Shape2M, _Shape2N1, _Shape2N2, _Shape2N3);
 
-			 v.vertex.x = radius * superRadiusPhi * cos(phi) * superRadiusTheta * cos(theta);
-			 v.vertex.y = radius * superRadiusPhi * sin(phi) * superRadiusTheta * cos(theta);
-			 v.vertex.z = radius * superRadiusPhi * sin(theta);
+			 v.vertex.x = r * superRadiusPhi * cos(phi) * superRadiusTheta * cos(theta);
+			 v.vertex.y = r * superRadiusPhi * sin(phi) * superRadiusTheta * cos(theta);
+			 v.vertex.z = r * superRadiusPhi * sin(theta);
 
 			 v.vertex.xyz += sin((v.vertex.xyz + totalOffset * _WaveValue3) * _WaveValue2) * _WaveValue1;
 
