@@ -8,13 +8,13 @@ EditorBuildSettings:
   - enabled: 0
     path: Assets/Scenes/Pilchuck/Mobius.unity
     guid: 02d1ebfd5d6b7c748a1ae2783dd05982
-  - enabled: 0
+  - enabled: 1
     path: Assets/Scenes/Pilchuck/PeppersGhostMobius.unity
     guid: c9b994ce5ea3ddf4c970bf8250578bd5
   - enabled: 0
     path: Assets/Scenes/Pilchuck/TorusKinect.unity
     guid: 57e62c8ec79dddf4389faebcf3928a11
-  - enabled: 1
+  - enabled: 0
     path: Assets/Scenes/Pilchuck/SupershapeKinect 1.unity
     guid: 7c3764c86224b8042ab69c95675f175b
   m_configObjects:

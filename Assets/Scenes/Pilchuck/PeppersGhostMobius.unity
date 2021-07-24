@@ -38,7 +38,7 @@ RenderSettings:
   m_ReflectionIntensity: 1
   m_CustomReflection: {fileID: 0}
   m_Sun: {fileID: 0}
-  m_IndirectSpecularColor: {r: 0.02702455, g: 0.107793055, b: 0.14969996, a: 1}
+  m_IndirectSpecularColor: {r: 0.027023254, g: 0.10779188, b: 0.14969918, a: 1}
   m_UseRadianceAmbientProbe: 0
 --- !u!157 &3
 LightmapSettings:
@@ -1046,6 +1046,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bd62fbd320b6c94b8202ce66cfaf6da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 0}
 --- !u!81 &129324039
 AudioListener:
   m_ObjectHideFlags: 0
@@ -7682,11 +7683,12 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1180784500}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 1bd62fbd320b6c94b8202ce66cfaf6da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 1180784505}
 --- !u!81 &1180784503
 AudioListener:
   m_ObjectHideFlags: 0
@@ -7738,12 +7740,12 @@ Camera:
   m_RenderingPath: -1
   m_TargetTexture: {fileID: 0}
   m_TargetDisplay: 0
-  m_TargetEye: 3
+  m_TargetEye: 0
   m_HDR: 0
   m_AllowMSAA: 1
   m_AllowDynamicResolution: 0
   m_ForceIntoRT: 0
-  m_OcclusionCulling: 1
+  m_OcclusionCulling: 0
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
 --- !u!114 &1180784506
@@ -12085,6 +12087,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bd62fbd320b6c94b8202ce66cfaf6da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 0}
 --- !u!81 &1776077981
 AudioListener:
   m_ObjectHideFlags: 0
@@ -13151,6 +13154,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1bd62fbd320b6c94b8202ce66cfaf6da, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  cam: {fileID: 0}
 --- !u!114 &1944805179 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 11407378, guid: 39d18871c11b53c4082d8202e3db68a3,
