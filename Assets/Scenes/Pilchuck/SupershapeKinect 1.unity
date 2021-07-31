@@ -164,7 +164,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3187c833c6106e54facb6071b57475a2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deviceStreamingMode: 0
+  deviceStreamingMode: 1
   deviceIndex: 0
   recordingFile: 
   minDistance: 0.5
@@ -223,11 +223,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   useMultiCamConfig: 0
   getDepthFrames: 1
-  getColorFrames: 2
+  getColorFrames: 0
   getInfraredFrames: 0
   getPoseFrames: 0
   getBodyFrames: 3
-  syncDepthAndColor: 1
+  syncDepthAndColor: 0
   syncBodyAndDepth: 1
   minUserDistance: 0
   maxUserDistance: 0
@@ -646,7 +646,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e8f864d895d4d9c4cb2a9b96bb86c08b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  deviceStreamingMode: 1
+  deviceStreamingMode: 0
   deviceIndex: 0
   recordingFile: 
   minDistance: 0.5
