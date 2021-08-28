@@ -62,6 +62,7 @@ public class Mobious : MonoBehaviour
     // Use this for initialization
     void Start()
     {
+        Cursor.visible = false;
         rotateX = Time.deltaTime;
         rotateY = Time.deltaTime;
         rotateZ = Time.deltaTime;
